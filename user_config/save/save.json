@@ -1,0 +1,220 @@
+{
+  "main_window": {
+    "most_recent_image": "C:\\Users\\jesse\\OneDrive\\Desktop\\NAI_UI_2\\output\\image_20251217191508_d45dfa8d2d4f4c67a3ef4210c0d0a8a2.png",
+    "most_recent_height": 1216,
+    "most_recent_width": 832,
+    "import_dialog_settings_state": true,
+    "import_dialog_prompt_state": true,
+    "import_dialog_seed_state": true,
+    "import_dialog_characters_state": true
+  },
+  "generate": {
+    "model": "nai-diffusion-4-5-full",
+    "model_name": "Version 4.5 - Full",
+    "variety+_value": 59,
+    "payload_name": "nai-diffusion-4-5-full",
+    "payload_type": "v45",
+    "sampler_name": "Euler Ancestral",
+    "sampler": "k_euler_ancestral",
+    "schedule_name": "Karras",
+    "schedule": "karras",
+    "steps": 28,
+    "seed": 0,
+    "scale": 5.0,
+    "rescale": 0.0,
+    "cfg": -1.0,
+    "legacy_v3": false,
+    "legacy_v4": false,
+    "SMEA": false,
+    "DYN": false,
+    "variety+": false,
+    "decrisp": false,
+    "brownian": false,
+    "size_name": "Normal Portrait 1216 x 832",
+    "image_height": 1216,
+    "image_width": 832
+  },
+  "colorize": {
+    "colorize_strength": null,
+    "colorize_strength_weight": 0,
+    "colorize_prompt": ""
+  },
+  "emotion": {
+    "emotion_type": "Aroused",
+    "emotion_strength": "Normal",
+    "emotion_prompt": "",
+    "emotion_strength_weight": 0,
+    "emotion_merged_prompt": "aroused;;"
+  },
+  "global_prompt": {
+    "global_positive_prompt": "",
+    "global_negative_prompt": "",
+    "global_positive_preset_name": "None",
+    "global_positive_preset_tags": "",
+    "global_positive_preset_target": null,
+    "global_negative_preset_name": "None",
+    "global_negative_preset_tags": "",
+    "character_number": 0
+  },
+  "workflow": {
+    "request_name": "generate",
+    "request_url": "https://image.novelai.net/ai/generate-image",
+    "task_list": [
+      "Generate"
+    ],
+    "loops": 1,
+    "sets": 0,
+    "filter_1": "None",
+    "filter_2": "None",
+    "filter_3": "None",
+    "delay": 0,
+    "organize_outputs_by_name": false,
+    "organize_outputs_by_character": false,
+    "organize_outputs_by_date": false,
+    "folder_name": ""
+  },
+  "settings": {
+    "API_key": "",
+    "selected_theme": "dark",
+    "enable_species_bar": true,
+    "enable_character_fluff_tab": true,
+    "enable_reference_image_b64_capture": false,
+    "enable_hydrus_sidecar": false
+  },
+  "character_1": {
+    "character": "Ecto",
+    "character_positive_prompt": "Hi, I'm Ecto - I made NAI UI 2. Think of me as a friendly ghost kitten who haunts your hard-drive. I'm totally not browsing your files for nudes right now. Anyway, to get started, you'll need to put your NovelAI API Key into the Settings tab. Once you have done that, the empty space in the middle is a big button - click it to start a generation. \n\nI'll take you on a quick tour of NAI UI 2 version 0.1.\n\nThe parameters tab is where you can set the model, sampler, seed, size and all that stuff. There are some buttons here that set things that NovelAI dosent usually allow. Try them out. That thing on the right? It's a job tracker - I'll tell you more about that soon. The box up top lets you move to options for the Emotion and Colorize tools to. \n\nThe prompt tab is where you'll find... the prompt (dun dun dun).  The P button shows your main prompt. The Q button shows the tags of your selected quality preset, so you can edit it on the fly. There are boxes for selecting the quality preset below, and under that is the Character box - that will choose how many charcter cards you want to use. \n\nThe workflow tab lets you semi-automate some processes. Want to generate an image then emotion then colorize it? Add the relevant tasks and just keep clicking, it will cycle through them automatically.  Loops and sets helps you quickly swap between characters for generation runs. If you want 'normal' NAI use 1 loop and 1 set. If you set sets to 0, it will start a special mode that sets the set count equal to your amount of character cards. The tracker on the parameters screen lets you visualize your loops and sets. \n\nThe modifiers tab is for per-generation automatic setting adjustment. Nothing there works yet.\n\nYou can create more character cards like mine in the setting menu under 'manage characters'. Most of the other buttons there don't work yet either, though you can turn on and off the character screen where my portrait is, and change how characters are sorted. The 'Status' sort uses the tags 'Main', 'Supporting' and 'Minor'.\n\nOn the Manage Characters screen, you can add your characters. The 'character ID' needs to be unique. Then theres some fluff (I'm going to make this more personalizable), a spot to pick your charcter portrait and space for prompts.\n\nPositive Character Prompt is your character prompt. \nNegative is your negative version. \nGlobal Positive Prompt Additions is a space to put anything you want to add to the main prompt when a character is used.\nNegative version of that to. \nTags is for tags. These are used by the filters to select groups of characters.\nQuick weights is for weights that you might want to adjust quickly rather than adding them to the prompt. You can see them below called 'test1', 'test2' etc. Chnages to chaarcters save when you close the character window. \n\nNow, onto the character tabs. It's alot like the global prompt tab. 'P' is your dynamic prompt. 'C' is the character prompt you set in the character manager. 'G' is your global character prompt, and 'O' is for outfit prompts, that's a work in progress. The ? button does nothing yet. \n\nGrid lets you choose your grid placement. It's not quite finished yet.\n\nReference is your references for use with v4.5 model. Currently you cant add references to a chaarcter through the UI, you'll have to put images into the character folder manually (it supports subfolders). \n\nModifiers is a work in progress. Currently only automatic chaarcter cycling is enabled. Set frequency to 0 to cycle charcters on set change.\n\nPreset will support additional quick prompts for characters. Currently only outfits lives here. You'll have to edit the character file directly to add them at the moment, but my character card has some alreadty set. \n\nHopefully that all makes sense. You can message me on Reddit or via seance if you need to (Reddit prefered). \n\nPS  - You can import images from NAI by dropping them into the NAI UI 2 menu. Only images made with NAI UI 2 can automatically restore your characters. \n",
+    "character_negative_prompt": "",
+    "character_coordinate_button": 13,
+    "character_y_coordinate": 0.5,
+    "character_x_coordinate": 0.5,
+    "character_positive_quick_weights": [],
+    "character_negative_quick_weights": [],
+    "character_preset_positive": "girl, pale skin, pale blue hair, blank white eye, cat ears, glowing blue, flaming tail, blue flames on tail, long hair, 1.5::large head::, 1.5::large ears::, 1.5::large eyes::",
+    "character_preset_negative": "ribs, large breasts, huge breasts, gigantic breasts, wide hips, plump, fat, curvy, narrow waist, hip bones, skinny, hip dips, belly, big belly, large areolae, huge ass",
+    "character_preset_global_positive": "",
+    "character_preset_global_negative": "",
+    "character_outfit_preset_positive": "blue underwear, translucent fabric, camisole, spectral motif, underwear only",
+    "character_outfit_preset_negative": "",
+    "most_recent_outfit": "Underwear Only",
+    "character_reference_path": null,
+    "character_reference_enabled": false,
+    "character_reference_style_aware": "character",
+    "character_reference_fidelity": 1.0,
+    "character_reference_strength": 0.0,
+    "character_tag_associations": [
+      {
+        "blacklist": [
+          "from behind"
+        ],
+        "inject": [
+          "flat chest"
+        ],
+        "inject_location": [
+          "c_positive"
+        ],
+        "trigger": [
+          "nude",
+          "naked",
+          "topless"
+        ],
+        "trigger_location": [
+          "c_positive",
+          "g_positive"
+        ]
+      }
+    ]
+  },
+  "character_2": {
+    "character": "None",
+    "character_positive_prompt": "",
+    "character_negative_prompt": "",
+    "character_coordinate_button": 0,
+    "character_y_coordinate": 0,
+    "character_x_coordinate": 0,
+    "character_positive_quick_weights": [],
+    "character_negative_quick_weights": [],
+    "character_preset_positive": "",
+    "character_preset_negative": "",
+    "character_preset_global_positive": "",
+    "character_preset_global_negative": "",
+    "character_outfit_preset_positive": "",
+    "character_outfit_preset_negative": "",
+    "most_recent_outfit": "",
+    "character_reference_path": null,
+    "character_reference_enabled": false,
+    "character_reference_style_aware": "character",
+    "character_reference_fidelity": 1.0,
+    "character_reference_strength": 0.0,
+    "character_tag_associations": []
+  },
+  "character_3": {
+    "character": "None",
+    "character_positive_prompt": "",
+    "character_negative_prompt": "",
+    "character_coordinate_button": -1,
+    "character_y_coordinate": null,
+    "character_x_coordinate": null,
+    "character_positive_quick_weights": [],
+    "character_negative_quick_weights": [],
+    "character_preset_positive": "",
+    "character_preset_negative": "",
+    "character_preset_global_positive": "",
+    "character_preset_global_negative": "",
+    "character_outfit_preset_positive": "",
+    "character_outfit_preset_negative": "",
+    "most_recent_outfit": "",
+    "character_reference_path": null,
+    "character_reference_enabled": false,
+    "character_reference_style_aware": "character",
+    "character_reference_fidelity": 1.0,
+    "character_reference_strength": 0.0,
+    "character_tag_associations": []
+  },
+  "character_4": {
+    "character": "None",
+    "character_positive_prompt": "",
+    "character_negative_prompt": "",
+    "character_coordinate_button": -1,
+    "character_y_coordinate": null,
+    "character_x_coordinate": null,
+    "character_positive_quick_weights": [],
+    "character_negative_quick_weights": [],
+    "character_preset_positive": "",
+    "character_preset_negative": "",
+    "character_preset_global_positive": "",
+    "character_preset_global_negative": "",
+    "character_outfit_preset_positive": "",
+    "character_outfit_preset_negative": "",
+    "most_recent_outfit": "",
+    "character_reference_path": null,
+    "character_reference_enabled": false,
+    "character_reference_style_aware": "character",
+    "character_reference_fidelity": 1.0,
+    "character_reference_strength": 0.0,
+    "character_tag_associations": []
+  },
+  "character_5": {
+    "character": "None",
+    "character_positive_prompt": "",
+    "character_negative_prompt": "",
+    "character_coordinate_button": -1,
+    "character_y_coordinate": null,
+    "character_x_coordinate": null,
+    "character_positive_quick_weights": [],
+    "character_negative_quick_weights": [],
+    "character_preset_positive": "",
+    "character_preset_negative": "",
+    "character_preset_global_positive": "",
+    "character_preset_global_negative": "",
+    "character_outfit_preset_positive": "",
+    "character_outfit_preset_negative": "",
+    "most_recent_outfit": "",
+    "character_reference_path": null,
+    "character_reference_enabled": false,
+    "character_reference_style_aware": "character",
+    "character_reference_fidelity": 1.0,
+    "character_reference_strength": 0.0,
+    "character_tag_associations": []
+  }
+}

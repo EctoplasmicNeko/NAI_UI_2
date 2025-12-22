@@ -1,0 +1,67 @@
+[
+    {
+        "name": "Phone Wallpaper",
+        "image_height": "1216",
+        "image_width": "576"
+    },
+    {
+        "name": "Dakimakura",
+        "image_height": "1216",
+        "image_width": "448"
+    },
+    {
+        "name": "Small Portrait",
+        "image_height": "768",
+        "image_width": "512"
+    },
+    {
+        "name": "Small Landscape",
+        "image_height": "512",
+        "image_width": "768"
+    },
+    {
+        "name": "Small Square",
+        "image_height": "640",
+        "image_width": "640"
+    },
+    {
+        "name": "Normal Portrait",
+        "image_height": "1216",
+        "image_width": "832"
+    },
+    {
+        "name": "Normal Landscape",
+        "image_height": "832",
+        "image_width": "1216"
+    },
+    {
+        "name": "Normal Square",
+        "image_height": "1024",
+        "image_width": "1024"
+    },
+    {
+        "name": "Large Portrait",
+        "image_height": "1536",
+        "image_width": "1024"
+    },
+    {
+        "name": "Large Landscape",
+        "image_height": "1024",
+        "image_width": "1536"
+    },
+    {
+        "name": "Large Square",
+        "image_height": "1024",
+        "image_width": "1024"
+    },
+    {
+        "name": "Wallpaper Portrait",
+        "image_height": "1920",
+        "image_width": "1088"
+    },
+    {
+        "name": "Wallpaper Landscape",
+        "image_height": "1088",
+        "image_width": "1920"
+    }
+]

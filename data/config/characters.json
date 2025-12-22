@@ -1,0 +1,220 @@
+[
+  {
+    "nameID": "Ecto",
+    "full_name": "Ectoplasmic Neko",
+    "c_positive": [
+      {
+        "tag": "girl",
+        "strength": 1
+      },
+      {
+        "tag": "pale skin",
+        "strength": 1
+      },
+      {
+        "tag": "pale blue hair",
+        "strength": 1
+      },
+      {
+        "tag": "blank white eye",
+        "strength": 1
+      },
+      {
+        "tag": "cat ears",
+        "strength": 1
+      },
+      {
+        "tag": "glowing blue",
+        "strength": 1
+      },
+      {
+        "tag": "flaming tail",
+        "strength": 1
+      },
+      {
+        "tag": "blue flames on tail",
+        "strength": 1
+      },
+      {
+        "tag": "long hair",
+        "strength": 1
+      },
+      {
+        "tag": "large head",
+        "strength": 1.5
+      },
+      {
+        "tag": "large ears",
+        "strength": 1.5
+      },
+      {
+        "tag": "large eyes",
+        "strength": 1.5
+      }
+    ],
+    "c_negative": [
+      {
+        "tag": "ribs",
+        "strength": 1
+      },
+      {
+        "tag": "large breasts",
+        "strength": 1
+      },
+      {
+        "tag": "huge breasts",
+        "strength": 1
+      },
+      {
+        "tag": "gigantic breasts",
+        "strength": 1
+      },
+      {
+        "tag": "wide hips",
+        "strength": 1
+      },
+      {
+        "tag": "plump",
+        "strength": 1
+      },
+      {
+        "tag": "fat",
+        "strength": 1
+      },
+      {
+        "tag": "curvy",
+        "strength": 1
+      },
+      {
+        "tag": "narrow waist",
+        "strength": 1
+      },
+      {
+        "tag": "hip bones",
+        "strength": 1
+      },
+      {
+        "tag": "skinny",
+        "strength": 1
+      },
+      {
+        "tag": "hip dips",
+        "strength": 1
+      },
+      {
+        "tag": "belly",
+        "strength": 1
+      },
+      {
+        "tag": "big belly",
+        "strength": 1
+      },
+      {
+        "tag": "large areolae",
+        "strength": 1
+      },
+      {
+        "tag": "huge ass",
+        "strength": 1
+      }
+    ],
+    "g_positive": "",
+    "g_negative": "",
+    "exclusive_chance_tag": "",
+    "non_exclusive_chance_tag": "",
+    "age": "???",
+    "gender": "Female",
+    "species": "Dead Felinid",
+    "subspecies": "Poltergeist",
+    "species icon": "Cat",
+    "tags": [],
+    "quick_weights": [
+      {
+        "max": 3,
+        "min": -3,
+        "negative": false,
+        "tag": "test1",
+        "value": 0
+      },
+      {
+        "max": 3,
+        "min": -3,
+        "negative": false,
+        "tag": "test2",
+        "value": 0
+      },
+      {
+        "max": 3,
+        "min": -3,
+        "negative": false,
+        "tag": "test3",
+        "value": 0
+      },
+      {
+        "max": 3,
+        "min": -3,
+        "negative": false,
+        "tag": "test4",
+        "value": 0
+      }
+    ],
+    "quotes": [
+      "ghost cat noises"
+    ],
+    "outfits": [
+      {
+        "name": "School Uniform",
+        "description": "A ghostly take on the standard uniform: translucent blouse with ethereal shimmer, navy skirt, and silver neck ribbon.",
+        "o_positive": "semi-transparent blouse, shimmering fabric, navy skirt, silver ribbon, spectral uniform",
+        "o_negative": ""
+      },
+      {
+        "name": "Pajamas",
+        "description": "A long white sleep robe with tattered edges and faint glowing blue seams.",
+        "o_positive": "white robe, glowing trim, tattered hem, long sleepwear, ghost aesthetic",
+        "o_negative": ""
+      },
+      {
+        "name": "Underwear Only",
+        "description": "A wispy pale blue camisole and matching translucent briefs with faint flame patterning.",
+        "o_positive": "blue underwear, translucent fabric, camisole, spectral motif, underwear only",
+        "o_negative": ""
+      },
+      {
+        "name": "Warm Weather Casual",
+        "description": "A sleeveless hoodie in smoky gray, gauzy skirt that moves like mist, and bare feet.",
+        "o_positive": "sleeveless hoodie, gauzy skirt, gray fabric, airy material, ghostly theme",
+        "o_negative": ""
+      },
+      {
+        "name": "Cold Weather Casual",
+        "description": "A long spectral cloak with faded blue runes, worn over a layered dress of gauze and linen.",
+        "o_positive": "spectral cloak, runic markings, gauze fabric, layered linen, magical cold weather wear",
+        "o_negative": ""
+      }
+    ],
+    "most_recent_outfit": "Underwear Only",
+    "tag_associations": [
+      {
+        "trigger": [
+          "nude",
+          "naked",
+          "topless"
+        ],
+        "inject": [
+          "flat chest"
+        ],
+        "blacklist": [
+          "from behind"
+        ],
+        "trigger_location": [
+          "c_positive",
+          "g_positive"
+        ],
+        "inject_location": [
+          "c_positive"
+        ]
+      }
+    ]
+  }
+]

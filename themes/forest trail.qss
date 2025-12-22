@@ -1,0 +1,82 @@
+/* COCO — Forest Trail Chaos */
+@import "common.qss";
+
+QWidget {
+    background-color: #F4FFE9;
+    color: #2E3C23;
+    outline: none;
+}
+
+QFrame {
+    background-color: #E1F5C4;
+    border-radius: 6px;
+}
+
+QPushButton {
+    background-color: #FFB15E;
+    border: 1px solid #7DB342;
+    color: #2E3C23;
+}
+
+QPushButton:hover {
+    background-color: #FFA247;
+}
+
+QComboBox {
+    background-color: #E1F5C4;
+    border: 2px solid #7DB342;
+}
+
+QTextEdit {
+background-color: rgba(172, 211, 175, 1)
+
+}
+
+QScrollBar:vertical {
+    width: 10px;
+    background: transparent;
+    margin: 4px 2px 4px 0;
+}
+QScrollBar::handle:vertical {
+    min-height: 24px;
+    border-radius: 4px;
+    background: rgba(125, 179, 66, 0.5);
+}
+QScrollBar::handle:vertical:hover {
+    background: rgba(125, 179, 66, 0.8);
+}
+QScrollBar::add-line:vertical,
+QScrollBar::sub-line:vertical {
+    height: 0px;
+}
+QScrollBar::add-page:vertical,
+QScrollBar::sub-page:vertical {
+    background: none;
+}
+
+
+#left_column {
+    border-right: 2px solid #7DB342;
+    border-radius: 0px;
+}
+
+#right_column {
+    border-left: 2px solid #7DB342;
+    border-radius: 0px;
+}
+
+#main_notebook {
+    border: 2px solid #7DB342;
+    padding: 6px
+}
+
+#character_middle_notebook {
+    border: 2px solid #7DB342;
+    padding: 6px
+}
+
+#character_lower_notebook {
+    border: 2px solid #7DB342;
+    padding: 6px
+}
+

@@ -1,0 +1,72 @@
+[
+    {
+        "name": "None",
+        "tags": "",
+        "target": "none"
+    },
+    {
+        "name": "V4.5 - Official",
+        "tags": "very aesthetic, masterpiece, no text",
+        "target": "end"
+    },
+    {
+        "name": "V4 - Official",
+        "tags": "rating:general, best quality, very aesthetic, absurdres",
+        "target": "end"
+    },
+    {
+        "name": "V4 Horny",
+        "tags": "rating:sensitive, amazing quality, very aesthetic, absurdres",
+        "target": "end"
+    },
+    {
+        "name": "V3 - Official",
+        "tags": "best quality, amazing quality, very aesthetic, absurdres",
+        "target": "end"
+    },
+    {
+        "name": "V3 - SFW",
+        "tags": "rating: general, best quality, amazing quality, very aesthetic, absurdres",
+        "target": "end"
+    },
+    {
+        "name": "V3 - Horny",
+        "tags": "rating: sensitive, best quality, amazing quality, very aesthetic, absurdres",
+        "target": "end"
+    },
+    {
+        "name": "V3 - Extra Horny",
+        "tags": "nsfw, best quality, amazing quality, very aesthetic, absurdres",
+        "target": "end"
+    },
+    {
+        "name": "V3 Furry",
+        "tags": "{best quality}, {amazing quality}",
+        "target": "end"
+    },
+    {
+        "name": "V3 Furry - SFW",
+        "tags": "rating: general, {best quality}, {amazing quality}",
+        "target": "end"
+    },
+    {
+        "name": "V3 Furry - Horny",
+        "tags": "rating: sensitive, {best quality}, {amazing quality}",
+        "target": "end"
+    },
+    {
+        "name": "V3 Furry - Extra Horny",
+        "tags": "nsfw, {best quality}, {amazing quality}",
+        "target": "end"
+    },
+    {
+        "name": "V2 - Official",
+        "tags": "very aesthetic, best quality, absurdres",
+        "target": "start"
+    },
+    {
+        "name": "V1 - Official",
+        "tags": "masterpiece, best quality,",
+        "target": "start"
+    }
+]

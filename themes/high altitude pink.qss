@@ -1,0 +1,29 @@
+/* MIKAN — High Altitude Pink */
+@import "common.qss";
+
+QWidget {
+    background-color: #FFE4F2;
+    color: #333;
+}
+
+QFrame {
+    background-color: #FFD6EC;
+    border: 2px solid #FF80C0;
+    border-radius: 8px;
+}
+
+QPushButton {
+    background-color: #FFB9DD;
+    border: 1px solid #FF80C0;
+    color: #333;
+}
+
+QPushButton:hover {
+    background-color: #FFA3D3;
+    border-color: #7CCFFF;
+}
+
+QComboBox {
+    background-color: #FFE4F2;
+    border: 2px solid #FF80C0;
+}

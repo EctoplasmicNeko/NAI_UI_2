@@ -1,0 +1,33 @@
+/* KONOHA — Silk & Tea Ceremony */
+@import "common.qss";
+
+QWidget {
+    background-color: #FFF3F7;
+    color: #523B2A;
+}
+
+QFrame {
+    background-color: #FBEAED;
+    border: 1px solid #D8B76A;
+    border-radius: 10px;
+}
+
+QPushButton {
+    background-color: #F5E4E8;
+    border: 1px solid #E6C993;
+    color: #523B2A;
+}
+
+QPushButton:hover {
+    background-color: #ECD6DB;
+}
+
+QComboBox {
+    background-color: #FBEAED;
+    border: 1px solid #D8B76A;
+}
+
+#left_column {
+    background-color: #181818;
+    border-right: 1px solid #303030;
+}

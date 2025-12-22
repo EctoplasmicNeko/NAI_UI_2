@@ -1,0 +1,46 @@
+/* KONOHA — Silk & Tea Ceremony */
+@import "common.qss";
+
+QWidget {
+    background-color: #FFF3F7;
+}
+
+QFrame {
+    background-color: #FBEAED;
+}
+
+QPushButton {
+    background-color: #F5E4E8;
+}
+
+QPushButton:hover {
+    background-color: #ECD6DB;
+}
+
+QComboBox {
+    background-color: #FBEAED;
+}
+
+#left_column  {background-color: #9d1831; }
+#centre_column{background-color: #103128; }
+#right_column {background-color: #30257e; }
+
+
+
+
+
+    #character_quick_tab {background-color:#456879;}
+    #quick_tab_label {background-color:#458979; border-top: 2px solid #ff5555;border-bottom: 2px solid #ff5555; }
+
+    #positive_prompt_title_bar {background-color:#458979; border-top: 2px solid #ff5555;border-bottom: 2px solid #ff5555; }
+    #positive_prompt_title_bar QFrame {background-color:transparent}
+    #positive_prompt_title_bar QLabel {background-color:transparent}
+    #positive_prompt_title_bar QPushButton {background-color:#888666}
+    #positive_prompt_title_bar QPushButton:checked {background-color:#666666}
+
+    #negative_prompt_title_bar {background-color:#458979; border-top: 2px solid #ff5555;border-bottom: 2px solid #ff5555; }
+    #negative_prompt_title_bar QFrame {background-color:transparent}
+    #negative_prompt_title_bar QLabel {background-color:transparent}
+    #negative_prompt_title_bar QPushButton {background-color:#888666}
+    #negative_prompt_title_bar QPushButton:checked {background-color:#666666}
+

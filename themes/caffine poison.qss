@@ -1,0 +1,28 @@
+/* NARU — Hacker Goth */
+@import "common.qss";
+
+QWidget {
+    background-color: #0D0D0D;
+    color: #E0FFE0;
+}
+
+QFrame {
+    background-color: #141414;
+    border: 1px solid #2EB82E;
+    border-radius: 4px;
+}
+
+QPushButton {
+    background-color: #0F1F0F;
+    border: 1px solid #57FF57;
+    color: #E0FFE0;
+}
+
+QPushButton:hover {
+    background-color: #122212;
+}
+
+QComboBox {
+    background-color: #141414;
+    border: 1px solid #57FF57;
+}

@@ -1,0 +1,20 @@
+@import "common.qss";
+
+QWidget {
+    background-color: #21222C;
+    color: #DDDDDD;
+}
+
+QFrame {
+    background-color: #272833;
+    border: 1px solid #444;
+}
+
+QPushButton {
+    background-color: #333444;
+    border: 1px solid #555;
+}
+
+QPushButton:hover {
+    background-color: #3c3d50;
+}

@@ -1,0 +1,120 @@
+{
+  "V3": {
+    "name": "Version 3 - Anime",
+    "payload_name": "nai-diffusion-3",
+    "payload_type": "v3",
+    "model_variety+_value": 19,
+    "builds": [
+      "Stable Diffusion XL 7BCCAA2C",
+      "Stable Diffusion XL C1E1DE52"
+    ],
+    "inpaints": [
+      "Stable Diffusion XL 1120E6A9"
+    ],
+    "allow_legacy_v3": true,
+    "allow_legacy_v4": false,
+    "allow_SMEA": true,
+    "allow_DYN": true,
+    "allow_decrisp": true,
+    "allow_brownian": true
+  },
+
+  "V3Furry": {
+    "name": "Version 3 - Furry",
+    "payload_name": "nai-diffusion-furry-3",
+    "payload_type": "v3",
+    "model_variety+_value": 19,
+    "builds": [
+      "Stable Diffusion XL 37C2B166"
+    ],
+    "inpaints": [
+      "Stable Diffusion XL F306816B"
+    ],
+    "allow_legacy_v3": true,
+    "allow_legacy_v4": false,
+    "allow_SMEA": true,
+    "allow_DYN": true,
+    "allow_decrisp": true,
+    "allow_brownian": true
+  },
+
+  "V4Curated": {
+    "name": "Version 4 - Curated PV",
+    "payload_name": "nai-diffusion-4-curated-preview",
+    "payload_type": "v4",
+    "model_variety+_value": 19,
+    "builds": [
+      "NovelAI Diffusion V4 7ABFFA2A",
+      "NovelAI Diffusion V4 F6E18726"
+    ],
+    "inpaints": [
+      "NovelAI Diffusion V4 770A9E12"
+    ],
+    "allow_legacy_v3": false,
+    "allow_legacy_v4": true,
+    "allow_SMEA": false,
+    "allow_DYN": false,
+    "allow_decrisp": false,
+    "allow_brownian": true
+  },
+
+  "V4Full": {
+    "name": "Version 4 - Full",
+    "payload_name": "nai-diffusion-4-full",
+    "payload_type": "v4",
+    "model_variety+_value": 19,
+    "builds": [
+      "NovelAI Diffusion V4 37442FCA",
+      "NovelAI Diffusion V4 79F47848"
+    ],
+    "inpaints": [
+      "NovelAI Diffusion V4 F6302A9D"
+    ],
+    "allow_legacy_v3": false,
+    "allow_legacy_v4": true,
+    "allow_SMEA": false,
+    "allow_DYN": false,
+    "allow_decrisp": false,
+    "allow_brownian": true
+  },
+
+  "V45Curated": {
+    "name": "Version 4.5 - Curated",
+    "payload_name": "nai-diffusion-4-5-curated",
+    "payload_type": "v45",
+    "model_variety+_value": 58,
+    "builds": [
+      "NovelAI Diffusion V4.5 C02D4F98"
+    ],
+    "inpaints": [
+      "NovelAI Diffusion V4.5 5AB81C7C"
+    ],
+    "allow_legacy_v3": false,
+    "allow_legacy_v4": false,
+    "allow_SMEA": false,
+    "allow_DYN": false,
+    "allow_decrisp": false,
+    "allow_brownian": true
+  },
+
+  "V45Full": {
+    "name": "Version 4.5 - Full",
+    "payload_name": "nai-diffusion-4-5-full",
+    "payload_type": "v45",
+    "model_variety+_value": 59,
+    "builds": [
+      "NovelAI Diffusion V4.5 4BDE2A90",
+      "NovelAI Diffusion V4.5 B9F340FD",
+      "NovelAI Diffusion V4.5 B5A2A797"
+    ],
+    "inpaints": [
+      "NovelAI Diffusion V4.5 5AB81C7C"
+    ],
+    "allow_legacy_v3": false,
+    "allow_legacy_v4": false,
+    "allow_SMEA": false,
+    "allow_DYN": false,
+    "allow_decrisp": false,
+    "allow_brownian": true
+  }
+}

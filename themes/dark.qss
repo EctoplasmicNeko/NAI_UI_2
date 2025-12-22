@@ -1,0 +1,151 @@
+/* Basic Dark Theme - no character */
+@import "common.qss";
+
+QWidget {
+    background-color: #21222C;
+    color: #DDDDDD;
+}
+
+QFrame {
+    background-color: #272833;
+}
+
+QPushButton {
+    background-color: #333444;
+    border: 1px solid #555;
+}
+
+QPushButton:hover {
+    background-color: #3c3d50;
+}
+
+QPushButton:checked {
+    background-color: #3949ab;
+    border: 1px solid #9fa8da;
+}
+
+QPushButton:disabled {
+    background-color: #333444;
+    border: 1px solid #555;
+    color: #777777;
+}
+
+
+QAbstractSpinBox {
+    selection-background-color: transparent;
+    selection-color: #dddddd;
+}
+
+QAbstractSpinBox:disabled {
+    selection-background-color: transparent;
+    selection-color: #dddddd;
+    color: #777777;
+}
+
+
+QLabel {
+    background-color: #272833;
+    border: 1px solid #555;
+}
+
+QScrollBar:vertical {
+    width: 10px;
+    background: transparent;
+    margin: 4px 2px 4px 0;
+}
+QScrollBar::handle:vertical {
+    min-height: 24px;
+    border-radius: 4px;
+    background: rgba(159, 168, 218, 0.5);
+}
+QScrollBar::handle:vertical:hover {
+    background: rgba(159, 168, 218, 0.8);
+}
+QScrollBar::add-line:vertical,
+QScrollBar::sub-line:vertical {
+    height: 0px;
+}
+QScrollBar::add-page:vertical,
+QScrollBar::sub-page:vertical {
+    background: none;
+}
+
+QCheckbox {
+    background-color: transparent; 
+
+}
+
+QCheckBox:disabled {
+    color: #777777;
+}
+
+QCheckBox::indicator:checked {
+    background-color: #3949ab;           /* fill color when checked */
+    border: 1px solid #c9a1b1ff;
+    border-radius: 4px;
+    image: none;                         /* if you want to draw your own check, keep none */
+}
+
+QProgressBar {
+    border: 1px solid #444;
+    border-radius: 3px;
+    background-color: #151822;
+    padding: 1px;
+}
+
+
+QListWidget {
+  background:#0f1115; border:1px solid #2a2f3a; border-radius:8px; color:#e8e8e8; outline:0;
+}
+QListWidget::item {
+  padding:6px 10px; margin:2px 6px; border-radius:6px; border:1px solid transparent;
+}
+QListWidget::item:hover {
+  background:rgba(255,255,255,0.06);
+}
+QListWidget::item:selected {
+  background:qlineargradient(x1:0,y1:0,x2:0,y2:1, stop:0 #2b3f73, stop:1 #24355d);
+  border:1px solid #6aa0ff; color:#ffffff;
+}
+QListWidget::item:selected:hover {
+  background:qlineargradient(x1:0,y1:0,x2:0,y2:1, stop:0 #355086, stop:1 #2b4472);
+}
+QListWidget::item:selected:!active { /* when the list loses focus */
+  background:#233150; border:1px solid #4e6ea6; color:#eaeefb;
+}
+QListWidget::item:disabled {
+  color:#7a7a7a;
+}
+
+
+#left_column {
+    border-right: 2px solid #555;
+}
+
+#right_column {
+    border-left: 2px solid #555;
+}
+
+#generate_progress_loop_bar::chunk {
+    /* glossy vertical gradient */
+    background: qlineargradient(
+        x1:0, y1:0, x2:1, y2:0,
+        stop:0   #2b9dff,
+        stop:0.5 #51b5ff,
+        stop:1   #2b9dff
+    );
+    border-radius: 2px;
+    margin: 0;
+}
+
+#generate_progress_set_bar::chunk {
+    /* glossy vertical gradient */
+    background: qlineargradient(
+        x1:0, y1:0, x2:1, y2:0,
+        stop:0   #ff2b2bff,
+        stop:0.5 #ff5151ff,
+        stop:1   #ff2b2bff
+    );
+    border-radius: 2px;
+    margin: 0;
+}

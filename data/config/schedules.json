@@ -1,0 +1,54 @@
+{
+  "Native": {
+    "name": "Native",
+    "payload_name": "native",
+    "valid_for_model": [
+      "Version 2",
+      "Version 3 - Anime",
+      "Version 3 - Furry",
+      "Version 4 - Curated PV",
+      "Version 4 - Full",
+      "Version 4.5 - Curated",
+      "Version 4.5 - Full"
+    ]
+  },
+  "Karras": {
+    "name": "Karras",
+    "payload_name": "karras",
+    "valid_for_model": [
+      "Version 2",
+      "Version 3 - Anime",
+      "Version 3 - Furry",
+      "Version 4 - Curated PV",
+      "Version 4 - Full",
+      "Version 4.5 - Curated",
+      "Version 4.5 - Full"
+    ]
+  },
+  "Exponential": {
+    "name": "Exponential",
+    "payload_name": "exponential",
+    "valid_for_model": [
+      "Version 2",
+      "Version 3 - Anime",
+      "Version 3 - Furry",
+      "Version 4 - Curated PV",
+      "Version 4 - Full",
+      "Version 4.5 - Curated",
+      "Version 4.5 - Full"
+    ]
+  },
+  "Polyexponential": {
+    "name": "Polyexponential",
+    "payload_name": "polyexponential",
+    "valid_for_model": [
+      "Version 2",
+      "Version 3 - Anime",
+      "Version 3 - Furry",
+      "Version 4 - Curated PV",
+      "Version 4 - Full",
+      "Version 4.5 - Curated",
+      "Version 4.5 - Full"
+    ]
+  }
+}

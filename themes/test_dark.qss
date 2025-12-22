@@ -1,0 +1,64 @@
+/* KONOHA — Silk & Tea Ceremony */
+@import "common.qss";
+
+
+#left_column  {background-color: #444; }
+#centre_column{background-color: #444; }
+#right_column {background-color: #444; }
+
+#image_generate_settings_tab {background-color: #272833; }
+#image_generate_sizes_tab {background-color: #272833; }
+#image_generate_buttons_tab {background-color: #272833; }
+/*-------------------------------------------------------------------------------------------------------------------------*/
+#image_generate_settings_tab {background-color: #272833 }
+
+#generate_progress_bar_frame { }
+#generate_progress_loop_bar { }
+#generate_progress_bar_label { }
+
+#model_select_combobox {background-color: #21222c; color: #DDDDDD  }
+#model_select_label {background-color: #272833; border: 1px solid #444; color: #DDDDDD }
+
+#sampler_select_combobox {background-color: #21222c; color: #DDDDDD  }
+#sampler_select_label {background-color: #272833; border: 1px solid #444; color: #DDDDDD }
+
+#schedule_select_combobox {background-color: #21222c; color: #DDDDDD  }
+#schedule_select_label {background-color: #272833; border: 1px solid #444; color: #DDDDDD  }
+
+#steps_select_counter {background-color: #21222c; color: #DDDDDD  }
+#steps_select_label {background-color: #272833; border: 1px solid #444; color: #DDDDDD  }
+
+#scale_select_counter {background-color: #21222c; color: #DDDDDD  }
+#scale_select_label {background-color: #272833; border: 1px solid #444; color: #DDDDDD  }
+
+#rescale_select_counter {background-color: #21222c; color: #DDDDDD  }
+#rescale_select_label {background-color: #272833; border: 1px solid #444; color: #DDDDDD  }
+#rescale_disable_button {background-color: #272833; border: 1px solid #444; color: #DDDDDD  }
+
+#cfg_select_counter {background-color: #21222c; color: #DDDDDD  }
+#cfg_select_label {background-color: #272833; border: 1px solid #444; color: #DDDDDD  }
+#cfg_disable_button { background-color: #272833; border: 1px solid #444; color: #DDDDDD }
+
+#seed_select_counter {background-color: #21222c; ; color: #DDDDDD  }
+#seed_select_label {background-color: #272833; border: 1px solid #444; color: #DDDDDD  }
+#seed_zero_button {background-color: #272833; border: 1px solid #444; color: #DDDDDD  }
+
+
+
+
+
+    #character_quick_tab {background-color:#456879;}
+    #quick_tab_label {background-color:#458979; border-top: 2px solid #ff5555;border-bottom: 2px solid #ff5555; }
+
+    #positive_prompt_title_bar {background-color:#458979; border-top: 2px solid #ff5555;border-bottom: 2px solid #ff5555; }
+    #positive_prompt_title_bar QFrame {background-color:transparent}
+    #positive_prompt_title_bar QLabel {background-color:transparent}
+    #positive_prompt_title_bar QPushButton {background-color:#888666}
+    #positive_prompt_title_bar QPushButton:checked {background-color:#666666}
+
+    #negative_prompt_title_bar {background-color:#458979; border-top: 2px solid #ff5555;border-bottom: 2px solid #ff5555; }
+    #negative_prompt_title_bar QFrame {background-color:transparent}
+    #negative_prompt_title_bar QLabel {background-color:transparent}
+    #negative_prompt_title_bar QPushButton {background-color:#888666}
+    #negative_prompt_title_bar QPushButton:checked {background-color:#666666}
+

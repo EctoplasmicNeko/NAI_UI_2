@@ -1,0 +1,42 @@
+[
+    {
+        "name": "Generate",
+        "request_name": "generate",
+        "request_url": "https://image.novelai.net/ai/generate-image"
+    },
+    {
+        "name": "Emotion",
+        "request_name": "emotion",
+        "request_url": "https://image.novelai.net/ai/augment-image"
+    },
+    {
+        "name": "Colorize",
+        "request_name": "colorize",
+        "request_url": "https://image.novelai.net/ai/augment-image"
+    },
+    {
+        "name": "Lineart",
+        "request_name": "lineart",
+        "request_url": "https://image.novelai.net/ai/augment-image"
+    },
+    {
+        "name": "Sketch",
+        "request_name": "sketch",
+        "request_url": "https://image.novelai.net/ai/augment-image"
+    },
+    {
+        "name": "Declutter",
+        "request_name": "declutter",
+        "request_url": "https://image.novelai.net/ai/augment-image"
+    },
+    {
+        "name": "Remove BG",
+        "request_name": "bg-removal",
+        "request_url": "https://image.novelai.net/ai/augment-image"
+    },
+    {
+        "name": "Upscale",
+        "request_name": null,
+        "request_url": "https://image.novelai.net/ai/upscale"
+    }
+]

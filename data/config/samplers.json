@@ -1,0 +1,108 @@
+{
+  "Euler": {
+    "name": "Euler",
+    "payload_name": "k_euler",
+    "valid_for_model": [
+      "Version 2",
+      "Version 3 - Anime",
+      "Version 3 - Furry",
+      "Version 4 - Curated PV",
+      "Version 4 - Full",
+      "Version 4.5 - Curated",
+      "Version 4.5 - Full"
+    ]
+  },
+  "Euler Ancestral": {
+    "name": "Euler Ancestral",
+    "payload_name": "k_euler_ancestral",
+    "valid_for_model": [
+      "Version 2",
+      "Version 3 - Anime",
+      "Version 3 - Furry",
+      "Version 4 - Curated PV",
+      "Version 4 - Full",
+      "Version 4.5 - Curated",
+      "Version 4.5 - Full"
+    ]
+  },
+  "DPM++ S2 Ancestral": {
+    "name": "DPM++ S2 Ancestral",
+    "payload_name": "k_dpmpp_2s_ancestral",
+    "valid_for_model": [
+      "Version 2",
+      "Version 3 - Anime",
+      "Version 3 - Furry",
+      "Version 4 - Curated PV",
+      "Version 4 - Full",
+      "Version 4.5 - Curated",
+      "Version 4.5 - Full"
+    ]
+  },
+  "DDIM": {
+    "name": "DDIM",
+    "payload_name": "ddim_v3",
+    "valid_for_model": [
+      "Version 2",
+      "Version 3 - Anime",
+      "Version 3 - Furry"
+    ]
+  },
+  "DPM ++2M": {
+    "name": "DPM ++2M",
+    "payload_name": "k_dpmpp_2m",
+    "valid_for_model": [
+      "Version 2"
+    ]
+  },
+  "DPM2": {
+    "name": "DPM2",
+    "payload_name": "k_dpm_2",
+    "valid_for_model": [
+      "Version 2"
+    ]
+  },
+  "DPM++ SDE": {
+    "name": "DPM++ SDE",
+    "payload_name": "k_dpmpp_sde",
+    "valid_for_model": [
+      "Version 2",
+      "Version 3 - Anime",
+      "Version 3 - Furry",
+      "Version 4 - Curated PV",
+      "Version 4 - Full",
+      "Version 4.5 - Curated",
+      "Version 4.5 - Full"
+    ]
+  },
+  "DPM Fast": {
+    "name": "DPM Fast",
+    "payload_name": "k_dpm_fast",
+    "valid_for_model": [
+      "Version 2"
+    ]
+  },
+  "DPM++ 2M SDE": {
+    "name": "DPM++ 2M SDE",
+    "payload_name": "k_dpmpp_2m_sde",
+    "valid_for_model": [
+      "Version 3 - Anime",
+      "Version 3 - Furry",
+      "Version 4 - Curated PV",
+      "Version 4 - Full",
+      "Version 4.5 - Curated",
+      "Version 4.5 - Full"
+    ]
+  },
+  "DPM++ 2M": {
+    "name": "DPM++ 2M",
+    "payload_name": "k_dpmpp_2m",
+    "valid_for_model": [
+      "Version 3 - Anime",
+      "Version 3 - Furry",
+      "Version 4 - Curated PV",
+      "Version 4 - Full",
+      "Version 4.5 - Curated",
+      "Version 4.5 - Full"
+    ]
+  }
+}

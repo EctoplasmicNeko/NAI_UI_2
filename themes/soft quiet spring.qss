@@ -1,0 +1,28 @@
+/* MIRAI — Soft Quiet Spring */
+@import "common.qss";
+
+QWidget {
+    background-color: #FFF7FB;
+    color: #402040;
+}
+
+QFrame {
+    background-color: #FCECF3;
+    border: 1px solid #F4A6C1;
+    border-radius: 12px;
+}
+
+QPushButton {
+    background-color: #FCD5E1;
+    border: 1px solid #F4A6C1;
+    color: #402040;
+}
+
+QPushButton:hover {
+    background-color: #FBBFD3;
+}
+
+QComboBox {
+    background-color: #FCECF3;
+    border: 1px solid #F4A6C1;
+}
