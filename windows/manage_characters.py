@@ -261,7 +261,7 @@ class ManageCharacterWindow(QDialog):
                 if c_positive not in ("", None):
                     for tag in c_positive:
                         if tag['strength'] != 1.0:
-                            c_positive_list.append(f'{tag['strength']}::{tag['tag']}::')
+                            c_positive_list.append(f"{tag['strength']}::{tag['tag']}::")
                         else:
                             c_positive_list.append(tag['tag'])
                     self.character_c_positive_textedit.setPlainText(', '.join(c_positive_list))
@@ -271,7 +271,7 @@ class ManageCharacterWindow(QDialog):
                 if c_negative not in ("", None):
                     for tag in c_negative:
                         if tag['strength'] != 1.0:
-                            c_negative_list.append(f'{tag['strength']}::{tag['tag']}::')
+                            c_negative_list.append(f"{tag['strength']}::{tag['tag']}::")
                         else:
                             c_negative_list.append(tag['tag'])
                     self.character_c_negative_textedit.setPlainText(', '.join(c_negative_list))
@@ -281,7 +281,7 @@ class ManageCharacterWindow(QDialog):
                     g_positive_list = []
                     for tag in g_positive:
                         if tag['strength'] != 1.0:
-                            g_positive_list.append(f'{tag['strength']}::{tag['tag']}::')
+                            g_positive_list.append(f"{tag['strength']}::{tag['tag']}::")
                         else:
                             g_positive_list.append(tag['tag'])
                     self.character_g_positive_textedit.setPlainText(', '.join(g_positive_list))
@@ -291,7 +291,7 @@ class ManageCharacterWindow(QDialog):
                     g_negative_list = []
                     for tag in g_negative:
                         if tag['strength'] != 1.0:
-                            g_negative_list.append(f'{tag['strength']}::{tag['tag']}::')
+                            g_negative_list.append(f"{tag['strength']}::{tag['tag']}::")
                         else:
                             g_negative_list.append(tag['tag'])
                     self.character_g_negative_textedit.setPlainText(', '.join(g_negative_list))
