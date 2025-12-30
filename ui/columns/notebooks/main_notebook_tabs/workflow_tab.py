@@ -1,4 +1,4 @@
-from PySide6.QtWidgets import QGridLayout, QFrame,QPushButton, QSizePolicy, QListWidget, QComboBox, QSpinBox, QLineEdit, QCheckBox
+from PySide6.QtWidgets import QApplication, QWidget, QGridLayout, QFrame, QStackedWidget, QHBoxLayout, QPushButton, QButtonGroup, QSizePolicy, QListWidget, QComboBox, QSpinBox, QLineEdit, QCheckBox
 from data.datahub import get_data, get_all_characters
 from widget import decorated_combobox
 
@@ -75,7 +75,7 @@ class WorkflowTab(QFrame):
         self.filter_frame_grid.addWidget(self.filter3_combo, 2, 2)
 
         self.sorting_frame = QFrame(self)
-        self.grid.addWidget(self.sorting_frame, 4, 0)
+        self.grid.addWidget(self.sorting_frame, 3, 0)
         self.sorting_frame_grid = QGridLayout(self.sorting_frame)
         self.sorting_frame_grid.setContentsMargins(0,0,0,3)
         self.sorting_frame_grid.setSpacing(3)
@@ -102,7 +102,7 @@ class WorkflowTab(QFrame):
         self.sort_by_name_checkbox.stateChanged.connect(lambda: self.hide_sort_by_name())
 
         self.list = QListWidget(self)
-        self.grid.addWidget(self.list, 5, 0)
+        self.grid.addWidget(self.list, 4, 0)
 
 
     def hide_sort_by_name(self):
