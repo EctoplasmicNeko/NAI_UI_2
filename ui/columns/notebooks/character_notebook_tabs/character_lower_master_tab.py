@@ -3,7 +3,7 @@ from PySide6.QtWidgets import QGridLayout, QFrame, QDoubleSpinBox
 from ui.columns.notebooks.character_sub_notebook import CharacterSubNotebook
 from signaling.character_changed_signal import character_changed_signal
 from signaling.outfit_changed import outfit_changed_signal
-from data.paths import CONFIG_DIR
+from data.paths import CHARACTERS_DIR
 from process.character_autocycle_manager import CharacterAutoCycleManager
 from data.datahub import get_all_characters
 
@@ -163,7 +163,6 @@ class CharacterLowerMasterTab(QFrame):
         else:
             styleaware = 'character'
         
-        
 
         return {
         'character_positive_prompt': self.sub_notebook.character_sub_tab_1.prompt_tab.positive_prompt_textbox.toPlainText(), #generation
@@ -227,8 +226,7 @@ class CharacterLowerMasterTab(QFrame):
         if not changed:
             return  # character not found, nothing to save
 
-        # write back to characters.json
-        characters_file_path = CONFIG_DIR / "characters.json"
+        characters_file_path = CHARACTERS_DIR / f"{character_name}.json"
         with characters_file_path.open("w", encoding="utf-8") as f:
             json.dump(self.characters, f, indent=2, ensure_ascii=False)
 
@@ -266,8 +264,7 @@ class CharacterLowerMasterTab(QFrame):
         if not changed:
             return
 
-        # Write characters.json
-        characters_file_path = CONFIG_DIR / "characters.json"
+        characters_file_path = CHARACTERS_DIR / f"{self.current_character}.json"
         with characters_file_path.open("w", encoding="utf-8") as f:
             json.dump(self.characters, f, indent=2, ensure_ascii=False)
 

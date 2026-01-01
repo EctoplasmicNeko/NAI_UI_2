@@ -110,11 +110,15 @@ if __name__ == "__main__":
 #22/12/2025 - menu button groups now select first button by default on init
 #22/12/2025 - added folder sorting to workflow tab
 #22/12/2025 - implimented folder sorting in process main
+#01/01/2026 - fixed bug causing character select combobox to be compressed in minimal tab mode
+#01/01/2026 - trackers now reset on task cancel
+#01/01/2026 - removed remnant references to characters.json, routed to unique character files
+#01/01/2026 - fixed reference to placeholder image path variable in character manager
 
 #to do:
 
 # add restore functionality to reference images metadata
-# add character quick weight display to manage characters window
+# finish character quick weight ui
 # replace character portrait label with toolbutton to lauch stats window
 # add character stats window
 # update metadata to process dict quick weights
@@ -122,11 +126,12 @@ if __name__ == "__main__":
 # make state capture and restore reference tab state
 # autocycle to start from selected character rather than always from first in list
 # allow character editing after creation
-# fix bugs related to collapsing character tabs 
 # rewrite prompt generation logic to seperate list collation/spllitting from assembly to support additional functions (wildcars, full tag association)
 #FINISH COORDINATE TAB FUNCTIONALITY
 
+#cd "C:\Users\jesse\OneDrive\Desktop\github\NAI_UI_2"
 
+#py -m PyInstaller --noconsole --onedir --name NAI_UI_2 main.py --add-data "data/config;data/config" --add-data "themes;themes" --add-data "images;images"
 
 
 

@@ -71,7 +71,7 @@ class MainUI(DropAwareFrame):
 
         #Bound buttons
         self.left_column_widget.upper_frame.page4.generate_button.pressed.connect(lambda: self.core_loop())
-        self.left_column_widget.upper_frame.page4.test_button.pressed.connect(lambda: self.abort_loops())
+        self.left_column_widget.upper_frame.page4.test_button.pressed.connect(lambda: print(self.image_cache))
         self.left_column_widget.upper_frame.page4.manage_characters_button.pressed.connect(lambda: self.launch_manage_characters())
         self.centre_column_widget.viewport_button.pressed.connect(lambda: self.core_loop())
         self.left_column_widget.upper_frame.page4.theme_combo.currentIndexChanged.connect(lambda: self.apply_theme(QApplication.instance(), self.left_column_widget.upper_frame.page4.theme_combo.currentText()))
