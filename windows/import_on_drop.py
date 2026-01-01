@@ -1,9 +1,10 @@
 # windows/import_on_drop.py
 from PySide6.QtWidgets import QDialog, QGridLayout, QCheckBox, QPushButton
+from PySide6.QtGui import QImage
 from signaling.import_signal import import_signal
 
 class ImportDialog(QDialog):
-    def __init__(self, parent, path, dict_type, metadata, import_settings_state, import_prompt_state, import_seed_state, import_characters_state):
+    def __init__(self, parent, path, dict_type, metadata, import_settings_state, import_prompt_state, import_seed_state, import_characters_state, has_metadata):
         super().__init__(parent)
         self.path = path
         self.dict_type = dict_type
@@ -15,6 +16,7 @@ class ImportDialog(QDialog):
 
         self.setWindowTitle("Import")
         self.build_import_window()
+        self.set_allowed_options(has_metadata)
 
     def build_import_window(self):
         self.grid = QGridLayout(self)
@@ -41,9 +43,13 @@ class ImportDialog(QDialog):
         self.import_button.clicked.connect(self.on_import_clicked)
         self.grid.addWidget(self.import_button, 4, 0)
 
+        self.import_image_button = QPushButton("Import Image Assets", self)
+        self.import_image_button.clicked.connect(self.on_import_image_clicked)
+        self.grid.addWidget(self.import_image_button, 5, 0)
+
         self.cancel_button = QPushButton("Cancel", self)
         self.cancel_button.clicked.connect(self.close)
-        self.grid.addWidget(self.cancel_button, 5, 0)
+        self.grid.addWidget(self.cancel_button, 6, 0)
 
     def on_import_clicked(self):
         import_signal.import_signal.emit(
@@ -55,3 +61,20 @@ class ImportDialog(QDialog):
             self.import_characters_checkbox.isChecked(),
         )
         self.close()
+
+    def set_allowed_options(self, has_metadata: bool):
+        if not has_metadata:
+            self.prompt_checkbox.setEnabled(False)
+            self.import_characters_checkbox.setEnabled(False)
+            self.import_settings_checkbox.setEnabled(False)
+            self.import_seed_checkbox.setEnabled(False)
+            self.import_button.setEnabled(False)
+
+    def on_import_image_clicked(self, path):
+        image = QImage(self.path)
+        width = image.width()
+        height = image.height()
+        import_signal.import_image_signal.emit(self.path, width, height)
+        self.close()
+
+

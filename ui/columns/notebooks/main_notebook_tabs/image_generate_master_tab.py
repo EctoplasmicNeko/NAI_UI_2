@@ -49,6 +49,8 @@ class ImageGenerateMasterTab(QFrame):
 
         height = int(self.image_sizes_tab.sizes_comboxbox.property('image_height'))
         width = int(self.image_sizes_tab.sizes_comboxbox.property('image_width'))
+        custom_width = self.image_sizes_tab.sizes_comboxbox.property('custom_width')
+        custom_height = self.image_sizes_tab.sizes_comboxbox.property('custom_height')
 
         return{
             'model': self.image_settings_tab.model_select_combobox.property('model'),
@@ -74,7 +76,9 @@ class ImageGenerateMasterTab(QFrame):
             'brownian': self.image_buttons_tab.brownian_checkbox.isChecked(),
             'size_name': self.image_sizes_tab.sizes_comboxbox.currentText(), #used by restore
             'image_height':height,
-            'image_width': width
+            'image_width': width,
+            'custom_width': custom_width,
+            'custom_height': custom_height
             }
     def import_state(self, loaded):
         self.image_settings_tab.model_select_combobox.setCurrentText(loaded['model_name'])
@@ -92,6 +96,12 @@ class ImageGenerateMasterTab(QFrame):
         self.image_buttons_tab.variety_checkbox.setChecked(loaded['variety+'])
         self.image_buttons_tab.decrisp_checkbox.setChecked(loaded['decrisp'])
         self.image_buttons_tab.brownian_checkbox.setChecked(loaded['brownian'])
+
+        self.image_sizes_tab.sizes_comboxbox.setProperty('custom_width', loaded['custom_width'])
+        self.image_sizes_tab.sizes_comboxbox.setProperty('custom_height', loaded['custom_height'])
+        self.image_sizes_tab.sizes_comboxbox.setItemText(0, f'Custom Size {self.image_sizes_tab.sizes_comboxbox.property("custom_height")} x {self.image_sizes_tab.sizes_comboxbox.property("custom_width")}')
+        self.image_sizes_tab.heights_list[0] = loaded['custom_height']
+        self.image_sizes_tab.width_list[0] = loaded['custom_width']  
 
         print(loaded['size_name'])
         print(self.image_sizes_tab.size_list)
@@ -117,7 +127,7 @@ class ImageGenerateMasterTab(QFrame):
                 self.image_sizes_tab.sizes_comboxbox.setCurrentIndex(0)
         else:
             self.image_sizes_tab.sizes_comboxbox.setCurrentText(loaded['size_name'])
-
+    
 
     def refresh_UI_by_model(self):
         model_name = self.image_settings_tab.model_select_combobox.currentText()
@@ -195,8 +205,6 @@ class ImageGenerateMasterTab(QFrame):
             self.image_settings_tab.schedule_select_combobox.setCurrentText(schedules[0])
 
         self.image_settings_tab.update_schedule_properties()
-
-
 
         
 

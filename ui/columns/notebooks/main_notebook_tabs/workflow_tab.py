@@ -1,6 +1,7 @@
 from PySide6.QtWidgets import QApplication, QWidget, QGridLayout, QFrame, QStackedWidget, QHBoxLayout, QPushButton, QButtonGroup, QSizePolicy, QListWidget, QComboBox, QSpinBox, QLineEdit, QCheckBox
 from data.datahub import get_data, get_all_characters
 from widget import decorated_combobox
+from windows.error import Error
 
 
 class WorkflowTab(QFrame):
@@ -35,7 +36,7 @@ class WorkflowTab(QFrame):
         self.task_frame_grid.addWidget(self.add_task_button, 0, 1)
 
         self.remove_task_button = QPushButton('Remove Task',self.task_frame)
-        self.remove_task_button.clicked.connect(lambda: self.list.takeItem(self.list.currentRow()))
+        self.remove_task_button.clicked.connect(lambda: self.delete_task())
         self.task_frame_grid.addWidget(self.remove_task_button, 0, 2)
 
         self.loops = QSpinBox(self)
@@ -104,6 +105,12 @@ class WorkflowTab(QFrame):
         self.list = QListWidget(self)
         self.grid.addWidget(self.list, 4, 0)
 
+    def delete_task(self):
+        list_length = self.list.count()
+        if list_length > 1:
+            self.list.takeItem(self.list.currentRow())
+        else:
+            Error(self, "Cannot remove the last task in the list.")
 
     def hide_sort_by_name(self):
         if self.sort_by_name_checkbox.isChecked():

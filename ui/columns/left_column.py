@@ -41,7 +41,8 @@ class LeftColumn(QFrame):
         self.characters = get_all_characters()
         self.character_list = self.get_sorted_characters_by_priority()
 
-        tab1_character = self.middle_frame.character_tab_1.fluff_tab.character_select_combobox.currentText
+        tab1_character = self.middle_frame.character_tab_1.fluff_tab.character_select_combobox.currentText()
+        print(f"tab1_character: {tab1_character}")
         self.middle_frame.character_tab_1.characters = self.characters
         self.middle_frame.character_tab_1.fluff_tab.characters = self.characters
         self.middle_frame.character_tab_1.character_list = self.character_list
@@ -55,7 +56,7 @@ class LeftColumn(QFrame):
             self.middle_frame.character_tab_1.fluff_tab.character_select_combobox.setCurrentText("None")
         self.middle_frame.character_tab_1.on_character_change()
 
-        tab2_character = self.middle_frame.character_tab_2.fluff_tab.character_select_combobox.currentText
+        tab2_character = self.middle_frame.character_tab_2.fluff_tab.character_select_combobox.currentText()
         self.middle_frame.character_tab_2.characters = self.characters
         self.middle_frame.character_tab_2.fluff_tab.characters = self.characters
         self.middle_frame.character_tab_2.character_list = self.character_list
@@ -69,7 +70,7 @@ class LeftColumn(QFrame):
             self.middle_frame.character_tab_2.fluff_tab.character_select_combobox.setCurrentText("None")
         self.middle_frame.character_tab_2.on_character_change()
 
-        tab3_character = self.middle_frame.character_tab_3.fluff_tab.character_select_combobox.currentText
+        tab3_character = self.middle_frame.character_tab_3.fluff_tab.character_select_combobox.currentText()
         self.middle_frame.character_tab_3.characters = self.characters
         self.middle_frame.character_tab_3.fluff_tab.characters = self.characters
         self.middle_frame.character_tab_3.character_list = self.character_list
@@ -83,7 +84,7 @@ class LeftColumn(QFrame):
             self.middle_frame.character_tab_3.fluff_tab.character_select_combobox.setCurrentText("None")
         self.middle_frame.character_tab_3.on_character_change()
 
-        tab4_character = self.middle_frame.character_tab_4.fluff_tab.character_select_combobox.currentText
+        tab4_character = self.middle_frame.character_tab_4.fluff_tab.character_select_combobox.currentText()
         self.middle_frame.character_tab_4.characters = self.characters
         self.middle_frame.character_tab_4.fluff_tab.characters = self.characters
         self.middle_frame.character_tab_4.character_list = self.character_list
@@ -97,7 +98,7 @@ class LeftColumn(QFrame):
             self.middle_frame.character_tab_4.fluff_tab.character_select_combobox.setCurrentText("None")
         self.middle_frame.character_tab_4.on_character_change()
 
-        tab5_character = self.middle_frame.character_tab_5.fluff_tab.character_select_combobox.currentText
+        tab5_character = self.middle_frame.character_tab_5.fluff_tab.character_select_combobox.currentText()
         self.middle_frame.character_tab_5.characters = self.characters
         self.middle_frame.character_tab_5.fluff_tab.characters = self.characters
         self.middle_frame.character_tab_5.character_list = self.character_list

@@ -227,8 +227,8 @@ def prepare_v45_payload(state, version):
 
 def prepare_positive_prompt(state, version):
     prompt = []
-    preset =  state['global_prompt']['global_positive_preset_tags']
-    target =  state['global_prompt']['global_positive_preset_target']
+    preset = state['global_prompt']['global_positive_preset_tags']
+    target = state['global_prompt']['global_positive_preset_target']
     character_count = state['global_prompt']['character_number']
 
     global_positive_prompt = state['global_prompt']['global_positive_prompt']
@@ -278,6 +278,7 @@ def prepare_positive_prompt(state, version):
             print(f"Inserted preset at start: {preset}")
     else:
         print("No global positive preset found.")
+    prompt = [tag.strip() for tag in prompt]
 
     final_prompt = ", ".join(prompt)
     return final_prompt
@@ -316,6 +317,8 @@ def prepare_negative_prompt(state, version):
     
     if preset != None and preset != '':
         prompt.append(preset)
+
+    prompt = [tag.strip() for tag in prompt]
     final_prompt = ", ".join(prompt)
     return final_prompt
 
@@ -348,8 +351,7 @@ def prepare_positive_character_prompt(state):
                 caption.extend(split_prompt_positive)
 
             print(f"Preparing associations for character {id} with caption: {caption}")
-            for tag in caption:
-                tag = tag.strip()
+            caption = [tag.strip() for tag in caption]
             print(f"Cleaned caption for character {id}: {caption}")
 
             caption_set = set(caption)

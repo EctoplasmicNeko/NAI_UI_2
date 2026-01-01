@@ -1,4 +1,6 @@
 import math
+from pathlib import Path
+import shutil
 import sys
 
 from PySide6.QtWidgets import QApplication, QWidget, QGridLayout
@@ -18,7 +20,10 @@ from process.workers import GenerateWorker
 from data.save import load_config, save_config
 from process.drop_handling import get_metadata, is_valid_image_file
 from windows.manage_characters import ManageCharacterWindow
-from data.paths import THEMES_DIR
+from data.paths import THEMES_DIR, USER_DIR
+from pathlib import Path
+from PySide6.QtGui import QImageReader, QImage
+from PySide6.QtCore import Qt
 
 
 class MainUI(DropAwareFrame):
@@ -37,6 +42,7 @@ class MainUI(DropAwareFrame):
         self.left_column_widget.refresh_all_character_lists()
         self.setWindowTitle("NAI UI 2")
         self.restore_ui_state(loaded_config)
+        import_signal.import_image_signal.connect(self.on_image_imported)
         
         self.models = get_data("models") #load the models dictionary from the data cache
         self.schedulers = get_data("schedules") #load the models dictionary from the data cache
@@ -83,15 +89,16 @@ class MainUI(DropAwareFrame):
             Error(self, "The dropped file is not a supported image format.")
             return
         
-        dict_type, metadata = get_metadata(file_path)
-        if not metadata:
-            Error(self, "No valid metadata found in the dropped image.")
-            return
-        
-        import_dialog = ImportDialog(self, file_path, dict_type, metadata, self.import_dialgue_settings_state, self.import_dialgue_prompt_state, self.import_dialgue_seed_state, self.import_dialgue_characters_state)
-        import_dialog.exec()
+        try:
+            dict_type, metadata = get_metadata(file_path)
 
-      
+            import_dialog = ImportDialog(self, file_path, dict_type, metadata, self.import_dialgue_settings_state, self.import_dialgue_prompt_state, self.import_dialgue_seed_state, self.import_dialgue_characters_state, True)
+            import_dialog.exec()
+
+        except Exception:
+            import_dialog = ImportDialog(self, file_path, None, None, self.import_dialgue_settings_state, self.import_dialgue_prompt_state, self.import_dialgue_seed_state, self.import_dialgue_characters_state, False)
+            import_dialog.exec()
+     
 
     def get_ui_state(self):
         state = {
@@ -178,31 +185,34 @@ class MainUI(DropAwareFrame):
         else:
             self.centre_column_widget.update_image(image_path)
             self.left_column_widget.upper_frame.page2.cycle_list()
-            
-            self.setProperty("most_recent_image", image_path)
-            self.setProperty("most_recent_width", state['generate']["image_width"])
-            self.setProperty("most_recent_height", state['generate']["image_height"])
 
-            self.loops += 1
-            self.total_loops += 1
-            self.left_column_widget.upper_frame.page0.image_master_stack_generate.image_settings_tab.generate_progress_loop_bar.setValue(self.loops)
-            if self.loops >= self.requested_loops:
-                self.incriment_set = True
-                self.sets += 1
-                completion_signaler.set_start_signal.emit()
-
-            if self.loops <= self.requested_loops and self.sets < self.requested_sets:
-                completion_signaler.window_lock_signal.emit(False)
-                
-            elif self.loops >= self.requested_loops and self.sets >= self.requested_sets:
+            if state['workflow']['request_name'] == 'generate':
+                self.setProperty("most_recent_image", image_path)
+                self.setProperty("most_recent_width", state['generate']["image_width"])
+                self.setProperty("most_recent_height", state['generate']["image_height"])
+                self.loops += 1
+                self.total_loops += 1
                 self.left_column_widget.upper_frame.page0.image_master_stack_generate.image_settings_tab.generate_progress_loop_bar.setValue(self.loops)
-                self.left_column_widget.upper_frame.page0.image_master_stack_generate.image_settings_tab.generate_progress_set_bar.setValue(self.sets)
-                print(f"All loops and sets completed. Total loops executed: {self.total_loops}")
+                if self.loops >= self.requested_loops:
+                    self.incriment_set = True
+                    self.sets += 1
+                    completion_signaler.set_start_signal.emit()
 
-                self.left_column_widget.upper_frame.page2.loops.setDisabled(False) 
-                self.left_column_widget.upper_frame.page2.sets.setDisabled(False)
-                self.new_request = True
-                completion_signaler.complete_signal.emit()
+                if self.loops <= self.requested_loops and self.sets < self.requested_sets:
+                    completion_signaler.window_lock_signal.emit(False)
+                    
+                elif self.loops >= self.requested_loops and self.sets >= self.requested_sets:
+                    self.left_column_widget.upper_frame.page0.image_master_stack_generate.image_settings_tab.generate_progress_loop_bar.setValue(self.loops)
+                    self.left_column_widget.upper_frame.page0.image_master_stack_generate.image_settings_tab.generate_progress_set_bar.setValue(self.sets)
+                    print(f"All loops and sets completed. Total loops executed: {self.total_loops}")
+
+                    self.left_column_widget.upper_frame.page2.loops.setDisabled(False) 
+                    self.left_column_widget.upper_frame.page2.sets.setDisabled(False)
+                    self.new_request = True
+                    completion_signaler.complete_signal.emit()
+            
+            else:
+                completion_signaler.window_lock_signal.emit(False)
           
 
     def restore_ui_state(self, loaded):
@@ -426,6 +436,63 @@ class MainUI(DropAwareFrame):
 
         self.restore_ui_state(state)
 
+    def on_image_imported(self, image_path: str, width: int, height: int):
+        imported_images_dir = USER_DIR / "imported_image"
+        imported_images_dir.mkdir(parents=True, exist_ok=True)
+
+        stored_image_path = imported_images_dir / "imported.png"
+
+        image_reader = QImageReader(image_path)
+        image_reader.setAutoTransform(True)
+        imported_image = image_reader.read()
+
+        if imported_image.isNull():
+            raise ValueError(f"Failed to read image: {image_path}")
+
+        original_width = imported_image.width()
+        original_height = imported_image.height()
+
+        def nearest_multiple_of_64(value: int) -> int:
+            return max(64, int(round(value / 64)) * 64)
+
+        resized_width = nearest_multiple_of_64(original_width)
+        resized_height = nearest_multiple_of_64(original_height)
+
+        if resized_width != original_width or resized_height != original_height:
+            imported_image = imported_image.scaled(resized_width, resized_height, Qt.IgnoreAspectRatio, Qt.SmoothTransformation)
+
+        if not imported_image.save(str(stored_image_path), "PNG"):
+            raise ValueError(f"Failed to save stored imported image: {stored_image_path}")
+
+        self.centre_column_widget.update_image(str(stored_image_path))
+        self.setProperty("most_recent_image", str(stored_image_path))
+        self.setProperty("most_recent_width", resized_width)
+        self.setProperty("most_recent_height", resized_height)
+
+        for size in self.left_column_widget.upper_frame.page0.image_master_stack_generate.image_sizes_tab.sizes[1:]:
+            matched = None
+            print(f"Checking size: {size['name']} {size['image_height']} x {size['image_width']} against imported size {resized_height} x {resized_width}")
+            if int(size['image_height']) == resized_height and int(size['image_width']) == resized_width:
+                image_sizes_tab = self.left_column_widget.upper_frame.page0.image_master_stack_generate.image_sizes_tab
+                size_name = f'{size["name"]} {size["image_height"]} x {size["image_width"]}'
+                print(f"Matched size: {size_name}")
+                index = image_sizes_tab.size_list.index(f'{size["name"]} {size["image_height"]} x {size["image_width"]}')
+                image_sizes_tab.sizes_comboxbox.setCurrentIndex(index)
+                matched = size_name
+                break
+
+        if matched != None:
+            image_sizes_tab = self.left_column_widget.upper_frame.page0.image_master_stack_generate.image_sizes_tab.sizes_comboxbox.setCurrentText(matched)
+        else:
+            image_sizes_tab = self.left_column_widget.upper_frame.page0.image_master_stack_generate.image_sizes_tab
+            image_sizes_tab.heights_list[0] = resized_height
+            image_sizes_tab.width_list[0] = resized_width
+            image_sizes_tab.sizes_comboxbox.setItemText(0, f"Custom Size {resized_height} x {resized_width}")
+            image_sizes_tab.sizes_comboxbox.setProperty("image_height", resized_height)
+            image_sizes_tab.sizes_comboxbox.setProperty("image_width", resized_width)
+            image_sizes_tab.sizes_comboxbox.setProperty("custom_height", resized_height)
+            image_sizes_tab.sizes_comboxbox.setProperty("custom_width", resized_width)
+            image_sizes_tab.sizes_comboxbox.setCurrentIndex(0)
 
     def coord_to_index_floor(self, coord: float) -> int:
         # Special-case "None" sentinel
