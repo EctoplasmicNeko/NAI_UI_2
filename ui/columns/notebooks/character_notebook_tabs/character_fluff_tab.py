@@ -11,7 +11,6 @@ class CharacterFluffTab(QFrame):
         self.image_cache = image_cache
         self.build_character_fluff_tab()
         minimal_character_tab.on_signal.connect(self.minimal_character_fluff_tab)
-        
 
     def build_character_fluff_tab(self):
 
@@ -20,7 +19,7 @@ class CharacterFluffTab(QFrame):
 
         # ---- Base layout ----
         self.grid = QGridLayout(self)
-        self.grid.setContentsMargins(0, 0, 0, 0)
+        self.grid.setContentsMargins(0, 0, 0, 3)
         self.grid.setSpacing(3)
         self.grid.setColumnStretch(0,1)
         self.grid.setColumnStretch(1,0)
@@ -108,9 +107,13 @@ class CharacterFluffTab(QFrame):
         if enabled:
             self.character_fluff_frame.show()
             self.character_portrait_frame.show()
+            self.character_fluff_quote_label.show()
+            self.updateGeometry()
         else:
             self.character_fluff_frame.hide()
             self.character_portrait_frame.hide()
+            self.character_fluff_quote_label.hide()
+            self.updateGeometry()
 
 
 

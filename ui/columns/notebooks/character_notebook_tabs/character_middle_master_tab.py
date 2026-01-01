@@ -15,11 +15,12 @@ class CharacterMiddleMasterTab(QFrame):
         self.characters = get_all_characters()
         self.character_list = [char['nameID'] for char in self.characters]
         self.image_cache = image_cache
-        self.setSizePolicy(QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Ignored)
+        self.setSizePolicy(QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Minimum)
         self.ID = ID
         self.build_character_master_tab()
         self.on_character_change()
         cycle_character_signal.character_cycle_signal.connect(self.handle_character_cycle)
+
 
     def build_character_master_tab(self):
 

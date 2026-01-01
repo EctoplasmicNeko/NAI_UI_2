@@ -21,9 +21,9 @@ class LeftColumn(QFrame):
         self.grid.setContentsMargins(5, 5, 5, 5)
         self.grid.setSpacing(5)
 
-        self.grid.setRowStretch(0,50)
+        self.grid.setRowStretch(0,45)
         self.grid.setRowStretch(1,0)
-        self.grid.setRowStretch(2,50)
+        self.grid.setRowStretch(2,45)
 
         self.upper_frame = MainNotebook(self, self.image_cache)
         self.grid.addWidget(self.upper_frame, 0, 0)
