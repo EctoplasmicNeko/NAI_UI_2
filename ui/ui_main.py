@@ -137,6 +137,9 @@ class MainUI(DropAwareFrame):
         self.loops = 0
         self.sets = 0
         self.total_loops = 0
+        self.left_column_widget.upper_frame.page0.image_master_stack_generate.image_settings_tab.generate_progress_loop_bar.setValue(0)
+        self.left_column_widget.upper_frame.page0.image_master_stack_generate.image_settings_tab.generate_progress_set_bar.setValue(0)
+
         self.left_column_widget.upper_frame.page2.loops.setDisabled(False) 
         self.left_column_widget.upper_frame.page2.sets.setDisabled(False)
         self.new_request = True
