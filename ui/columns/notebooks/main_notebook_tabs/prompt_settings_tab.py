@@ -67,7 +67,7 @@ class PromptSettingsTab(QFrame):
         self.grid.addWidget(self.positive_prompt_label, 0, 1,)
 
         self.positive_prompts_delete_button = QPushButton('Delete', self)
-        self.positive_prompts_delete_button.pressed.connect(lambda: self.positive_prompt_textbox.clear())
+        self.positive_prompts_delete_button.pressed.connect(lambda: self.positive_current_textbox.clear())
         self.positive_prompts_delete_button.setMinimumHeight(30)
         self.grid.addWidget(self.positive_prompts_delete_button, 0, 2,)
 
@@ -119,7 +119,7 @@ class PromptSettingsTab(QFrame):
         self.grid.addWidget(self.negative_prompt_label, 2, 1,)
 
         self.negative_prompts_delete_button = QPushButton('Delete', self)
-        self.negative_prompts_delete_button.pressed.connect(lambda: self.negative_prompt_textbox.clear())
+        self.negative_prompts_delete_button.pressed.connect(lambda: self.negative_current_textbox.clear())
         self.negative_prompts_delete_button.setMinimumHeight(30)
         self.grid.addWidget(self.negative_prompts_delete_button, 2, 2,)
 
@@ -175,7 +175,6 @@ class PromptSettingsTab(QFrame):
             for preset in self.negative_presets:
                 if preset['name'] == selected:
                     self.negative_preset_textbox.setText(preset['tags'])
-
 
 
     def export_state(self):
