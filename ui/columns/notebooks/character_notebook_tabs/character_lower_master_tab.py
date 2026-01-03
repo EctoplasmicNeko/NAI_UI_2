@@ -213,22 +213,21 @@ class CharacterLowerMasterTab(QFrame):
 
     
     def on_quick_weights_changed(self, character_name, quick_weights_data):
-        """Called whenever a quick weight spinner is changed."""
+        changed_character = None
 
-        # update in-memory characters list
-        changed = False
         for character in self.characters:
             if character.get("nameID") == character_name:
                 character["quick_weights"] = quick_weights_data
-                changed = True
+                changed_character = character
                 break
 
-        if not changed:
-            return  # character not found, nothing to save
+        if not changed_character:
+            return
 
         characters_file_path = CHARACTERS_DIR / f"{character_name}.json"
         with characters_file_path.open("w", encoding="utf-8") as f:
-            json.dump(self.characters, f, indent=2, ensure_ascii=False)
+            json.dump(changed_character, f, indent=2, ensure_ascii=False)
+
 
     def on_outfit_preset_changed(self, new_outfit_name, ID):
         """Update the currently selected character's most recent outfit and save."""

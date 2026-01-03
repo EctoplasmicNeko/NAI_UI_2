@@ -21,4 +21,6 @@ CHARACTERS_DIR = USER_DIR / "characters"
 PORTRAITS_DIR  = USER_DIR / "character_portraits"
 PRESETS_DIR    = USER_DIR / "preset"
 SAVE_DIR = USER_DIR / "save"
+ENCODES_DIR    = USER_DIR / "vibe_encodes"
+VIBES_DIR     = USER_DIR / "vibes"
 

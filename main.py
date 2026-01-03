@@ -5,7 +5,9 @@ from data.paths import (
     PORTRAITS_DIR,
     OUTPUT_DIR,
     CHARACTERS_DIR,
-    REFERENCE_DIR
+    REFERENCE_DIR,
+    ENCODES_DIR,
+    VIBES_DIR
 )
 # data/paths.py
 def ensure_dirs() -> None:
@@ -13,6 +15,8 @@ def ensure_dirs() -> None:
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
     CHARACTERS_DIR.mkdir(parents=True, exist_ok=True)
     REFERENCE_DIR.mkdir(parents=True, exist_ok=True)
+    ENCODES_DIR.mkdir(parents=True, exist_ok=True)
+    VIBES_DIR.mkdir(parents=True, exist_ok=True)
 
 
 # This check ensures we only run the window when executing directly

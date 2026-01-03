@@ -109,6 +109,7 @@ class MainUI(DropAwareFrame):
         'global_prompt': self.left_column_widget.upper_frame.page1.export_state(),
         'workflow': self.left_column_widget.upper_frame.page2.export_state(),
         'settings': self.left_column_widget.upper_frame.page4.export_state(),
+        'vibe': self.right_column_widget.page1.export_state(),
         
         'character_1': self.left_column_widget.middle_frame.character_tab_1.export_state() | self.left_column_widget.lower_frame.character_tab_1.export_state(),
         'character_2': self.left_column_widget.middle_frame.character_tab_2.export_state() | self.left_column_widget.lower_frame.character_tab_2.export_state(),

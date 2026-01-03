@@ -1,6 +1,8 @@
 import random
 from process.base64 import padded_image_to_b64
 from process.metadata import prepare_metadata
+from process.process_vibes import identify_vibe_images
+from windows.error import Error
 
 def prepare_generate_payload(state):
     version = state['generate']['payload_type']
@@ -62,6 +64,17 @@ def prepare_v4_payload(state, version):
     cfg = prepare_cfg(state)
     brownian = prepare_brownian(state)
 
+    if state['vibe']['vibe_enabled'] and state['vibe']['reference_image_paths'] != []:
+        vibe_encodings = identify_vibe_images(state)
+        vibe_reference_strength = state['vibe']['reference_strengths']
+        vibe_normalize_strength = state['vibe']['normalize_strength']
+        
+    else:
+        print("Vibe not enabled or no reference images provided.")
+        vibe_encodings = []
+        vibe_reference_strength = []
+        vibe_normalize_strength = False
+
     payload = {
     "action": "generate",
     "input": positive_prompt,
@@ -82,6 +95,9 @@ def prepare_v4_payload(state, version):
         "sampler": state['generate']['sampler'],
         "scale": state['generate']['scale'],
         "seed": seed,
+        "normalize_reference_strength_multiple": vibe_normalize_strength,
+        "reference_strength_multiple": vibe_reference_strength,
+        "reference_image_multiple": vibe_encodings,
         "skip_cfg_above_sigma": cfg,
         "steps": state['generate']['steps'],
         "use_coords": True,
@@ -114,9 +130,24 @@ def prepare_v45_payload(state, version):
     seed = generate_seed(state)
     cfg = prepare_cfg(state)
     brownian = prepare_brownian(state)
+
+    if state['vibe']['vibe_enabled'] and state['vibe']['reference_image_paths'] != []:
+        vibe_encodings = identify_vibe_images(state)
+        vibe_reference_strength = state['vibe']['reference_strengths']
+        vibe_normalize_strength = state['vibe']['normalize_strength']
+        using_vibe = True
+        
+    else:
+        print("Vibe not enabled or no reference images provided.")
+        vibe_encodings = []
+        vibe_reference_strength = []
+        vibe_normalize_strength = False
     
 
     if state['character_1']['character_reference_enabled'] and state['character_1']['character_reference_path'] != None:
+        if using_vibe:
+            Error(None, "Vibe and Character Reference cannot be used together. Generation payload not created.")
+            return None, None
 
         referenceb64 = padded_image_to_b64(state['character_1']['character_reference_path'])
         fidelity = float(state['character_1']['character_reference_fidelity'])
@@ -144,6 +175,9 @@ def prepare_v45_payload(state, version):
             "seed": seed,
             "skip_cfg_above_sigma": cfg,
             "steps": state['generate']['steps'],
+            "normalize_reference_strength_multiple": vibe_normalize_strength,
+            "reference_strength_multiple": vibe_reference_strength,
+            "reference_image_multiple": vibe_encodings,
             "use_coords": True,
             "v4_negative_prompt": {
                 "caption": {
@@ -199,6 +233,9 @@ def prepare_v45_payload(state, version):
             "sampler": state['generate']['sampler'],
             "scale": state['generate']['scale'],
             "seed": seed,
+            "normalize_reference_strength_multiple": vibe_normalize_strength,
+            "reference_strength_multiple": vibe_reference_strength,
+            "reference_image_multiple": vibe_encodings,
             "skip_cfg_above_sigma": cfg,
             "steps": state['generate']['steps'],
             "use_coords": True,

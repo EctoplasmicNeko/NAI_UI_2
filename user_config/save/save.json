@@ -1,6 +1,6 @@
 {
   "main_window": {
-    "most_recent_image": "C:\\Users\\jesse\\OneDrive\\Desktop\\github\\NAI_UI_2\\output\\image_20260101233546_ececbcc140d046c19ca698658e4cd335.png",
+    "most_recent_image": "C:\\Users\\jesse\\OneDrive\\Desktop\\github\\NAI_UI_2\\output\\image_20260103194206_6252b5f1345144519eb64c9a84f6298f.png",
     "most_recent_height": 1216,
     "most_recent_width": 832,
     "import_dialog_settings_state": true,
@@ -29,7 +29,7 @@
     "DYN": false,
     "variety+": false,
     "decrisp": false,
-    "brownian": false,
+    "brownian": true,
     "size_name": "Normal Portrait 1216 x 832",
     "image_height": 1216,
     "image_width": 832,
@@ -56,7 +56,7 @@
     "global_positive_preset_target": "end",
     "global_negative_preset_name": "V4 Light",
     "global_negative_preset_tags": "blurry, lowres, error, worst quality, bad quality, jpeg artifacts, very displeasing, logo, dated, signature",
-    "character_number": 1
+    "character_number": 0
   },
   "workflow": {
     "request_name": "generate",
@@ -81,6 +81,19 @@
     "enable_character_fluff_tab": true,
     "enable_reference_image_b64_capture": false,
     "enable_hydrus_sidecar": false
+  },
+  "vibe": {
+    "reference_image_paths": [
+      "C:\\Users\\jesse\\OneDrive\\Desktop\\github\\NAI_UI_2\\user_config\\vibes\\1000003485.jpg"
+    ],
+    "reference_strengths": [
+      1.0
+    ],
+    "reference_information_extracted": [
+      1.0
+    ],
+    "normalize_strength": false,
+    "vibe_enabled": true
   },
   "character_1": {
     "character": "None",
