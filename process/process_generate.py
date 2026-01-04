@@ -393,57 +393,51 @@ def prepare_positive_character_prompt(state):
 
             caption_set = set(caption)
             associations_to_add = []
+            associations_to_remove = []
 
-            associations_positive = state[key]['character_tag_associations']
-
-            for association in associations_positive:
-
-                blacklist = association.get('blacklist')
-                blacklist_found = False
-                print(f"blacklist: {blacklist}")
-                if blacklist:
-                    for blacklist_tag in blacklist:
-                        if blacklist_tag in caption_set:
-                            blacklist_found = True
-                            break
-                if blacklist_found:
-                    continue
-
-                trigger_tags = []
-                raw_triggers = association['trigger']
-
-                for raw_trigger in raw_triggers:
-                    trigger = str(raw_trigger).strip()
-                    if trigger:
-                        trigger_tags.append(trigger)
-
+            for association in state[key]['character_tag_associations']:
+                print(f"Processing association: {association}")
+                blacklists = association['blacklist']
+                for blacklist in blacklists:
+                    if blacklist in caption_set:
+                        print(f"Skipping association due to blacklist match: {blacklist}")
+                        break
+                
                 trigger_found = False
-                for trigger_tag in trigger_tags:
-                    if trigger_tag in caption_set:
+                triggers = association['trigger']
+                for trigger in triggers:
+                    if trigger in caption_set:
+                        print(f"Trigger found for association: {trigger}")
                         trigger_found = True
                         break
 
-                if not trigger_found:
-                    continue
+                if trigger_found:
+                    print(f"Applying association of type {association['type']}")
+                    if association['type'] == 'add':
+                        for tag in association['inject']:
+                            associations_to_add.append(tag)
 
-                cleaned_inject_tags = []
-                raw_inject_tags = association['inject']
+                    elif association['type'] == 'remove':
+                        for tag in association['inject']:
+                            associations_to_remove.append(tag)
 
-                for raw_tag in raw_inject_tags:
-                    tag = str(raw_tag).strip()
-                    if tag:
-                        cleaned_inject_tags.append(tag)
+                    elif association['type'] == 'replace':
+                        for tag in association['inject']:
+                            associations_to_add.append(tag)
+                        for tag in association['trigger']:
+                            associations_to_remove.append(tag)
 
-                for inject_tag in cleaned_inject_tags:
-                    if inject_tag in caption_set:
-                        continue
-                    if inject_tag in associations_to_add:
-                        continue
+            print(f"Associations to add for character {id}: {associations_to_add}")
+            print(f"Associations to remove for character {id}: {associations_to_remove}")
 
-                    associations_to_add.append(inject_tag)
-                    caption_set.add(inject_tag)
+            for tag in associations_to_add:
+                if tag not in caption:
+                    caption.append(tag)
 
-            caption.extend(associations_to_add)
+            for tag in associations_to_remove:
+                if tag in caption:
+                    caption.remove(tag)
+
             print(f"Final caption for character {id}: {caption}")
 
             joined_caption = ", ".join(caption)
@@ -489,9 +483,6 @@ def prepare_negative_character_prompt(state):
             if prompt_negative != "" and prompt_negative != None:
                 split_prompt_negative = prompt_negative.split(",")
                 caption.extend(split_prompt_negative)   
-
-            print(f"Preparing negative associations for character {id} with caption: {caption}")
-            caption = [tag.strip() for tag in caption]    
 
             print(f"Cleaned negative caption for character {id}: {caption}")
             joined_caption = ", ".join(caption)

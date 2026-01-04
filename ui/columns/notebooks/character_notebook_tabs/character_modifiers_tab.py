@@ -1,4 +1,4 @@
-from PySide6.QtWidgets import QGridLayout, QFrame,QCheckBox, QSpinBox, QLabel
+from PySide6.QtWidgets import QGridLayout, QFrame,QCheckBox, QSpinBox, QLabel, QSizePolicy
 from data.datahub import get_all_characters
 from widget.decorated_combobox import DecoratedComboBox
 
@@ -40,6 +40,7 @@ class CharacterModifiersTab(QFrame):
         self.auto_advance_character_frequency_spinbox.setPrefix("Frequency: ")
 
         self.filter_frame = QFrame(self)
+        self.filter_frame.setSizePolicy(QSizePolicy.Policy.Ignored, QSizePolicy.Policy.Minimum)
         self.filter_frame.setObjectName("filter_frame")
         self.grid.addWidget(self.filter_frame, 3, 0, 1, 2)
         self.filter_grid = QGridLayout(self.filter_frame)
