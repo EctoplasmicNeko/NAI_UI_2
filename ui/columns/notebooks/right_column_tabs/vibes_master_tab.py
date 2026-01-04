@@ -175,19 +175,18 @@ class VibeReferenceMasterTab(QFrame):
         reference_strengths = []
         reference_information_extracted = []
 
-        if self.current_page_layout is None:
-            return reference_image_paths, reference_strengths, reference_information_extracted
+        if self.current_page_layout is not None:
 
-        for i in range(self.current_page_layout.count()):
-            widget = self.current_page_layout.itemAt(i).widget()
-            if not isinstance(widget, VibeReferenceEntry):
-                continue
-            if not widget.use_vibe_checkbox.isChecked():
-                continue
+            for i in range(self.current_page_layout.count()):
+                widget = self.current_page_layout.itemAt(i).widget()
+                if not isinstance(widget, VibeReferenceEntry):
+                    continue
+                if not widget.use_vibe_checkbox.isChecked():
+                    continue
 
-            reference_image_paths.append(str(widget.image_path))
-            reference_strengths.append(round(widget.strength_spinner.value(), 2))
-            reference_information_extracted.append(round(widget.info_extracted_spinner.value(), 2))
+                reference_image_paths.append(str(widget.image_path))
+                reference_strengths.append(round(widget.strength_spinner.value(), 2))
+                reference_information_extracted.append(round(widget.info_extracted_spinner.value(), 2))
 
 
         return {
