@@ -2,6 +2,7 @@ from PySide6.QtWidgets import QApplication, QWidget, QGridLayout, QFrame, QStack
 from data.datahub import get_data, get_all_characters
 from widget import decorated_combobox
 from windows.error import Error
+from process.CompletionSignaler import completion_signaler
 
 
 class WorkflowTab(QFrame):
@@ -124,7 +125,7 @@ class WorkflowTab(QFrame):
             for tag in character.get("tags", []):
                 if tag not in tag_list:
                     tag_list.append(tag)
-            
+        tag_list.sort()
         return tag_list
     
     def determine_list_length(self):
@@ -134,7 +135,12 @@ class WorkflowTab(QFrame):
                 if self.filter2_combo.currentText() in character.get("tags", []) or self.filter2_combo.currentText() == "None":
                     if self.filter3_combo.currentText() in character.get("tags", []) or self.filter3_combo.currentText() == "None":
                         length += 1
-        return length
+        if length == 0:
+            Error(self, "No characters match the selected filters. Please adjust your filters.")
+            completion_signaler.abort_signal.emit()
+            return 1
+        else:
+            return length
                         
 
 

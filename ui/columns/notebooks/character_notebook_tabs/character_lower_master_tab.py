@@ -96,11 +96,16 @@ class CharacterLowerMasterTab(QFrame):
                     self.sub_notebook.character_sub_tab_5.outfit_combo.clear()
                     self.sub_notebook.character_sub_tab_5.outfit_combo.addItems(["None"] + [outfit['name'] for outfit in character['outfits']])
                     self.sub_notebook.character_sub_tab_5.outfit_combo.blockSignals(False)
-                    self.sub_notebook.character_sub_tab_5.outfit_combo.setCurrentText(character['most_recent_outfit'])
+                    most_recent_outfit = character['most_recent_outfit']
+                    if most_recent_outfit in [None, "", "None"]:
+                        self.sub_notebook.character_sub_tab_5.outfit_combo.setCurrentText("None")
+                        self.sub_notebook.character_sub_tab_1.prompt_tab.positive_prompt_outfit_textbox.clear()
+                        self.sub_notebook.character_sub_tab_1.prompt_tab.negative_prompt_outfit_textbox.clear()
+                    else:
+                        self.sub_notebook.character_sub_tab_5.outfit_combo.setCurrentText(most_recent_outfit)
                 
                     self.setProperty('tag_associations', character.get("tag_associations") or [])
                     break
-
 
         else:
 
@@ -257,6 +262,7 @@ class CharacterLowerMasterTab(QFrame):
         for character in self.characters:
             if character.get("nameID") == self.current_character:
                 character["most_recent_outfit"] = new_outfit_name
+                character_data = character
                 changed = True
                 break
 
@@ -265,7 +271,7 @@ class CharacterLowerMasterTab(QFrame):
 
         characters_file_path = CHARACTERS_DIR / f"{self.current_character}.json"
         with characters_file_path.open("w", encoding="utf-8") as f:
-            json.dump(self.characters, f, indent=2, ensure_ascii=False)
+            json.dump(character_data, f, indent=2, ensure_ascii=False)
 
         print(f"[Character] Saved most_recent_outfit: {new_outfit_name}")
 

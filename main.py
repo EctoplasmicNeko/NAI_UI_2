@@ -127,7 +127,6 @@ if __name__ == "__main__":
 # add character stats window
 # update metadata to process dict quick weights
 # update image cache to store image and path for faster loading
-# make state capture and restore reference tab state
 # autocycle to start from selected character rather than always from first in list
 # allow character editing after creation
 # rewrite prompt generation logic to seperate list collation/spllitting from assembly to support additional functions (wildcars, full tag association)

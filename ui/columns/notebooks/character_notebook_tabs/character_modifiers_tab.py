@@ -39,18 +39,28 @@ class CharacterModifiersTab(QFrame):
         self.grid.addWidget(self.auto_advance_character_frequency_spinbox, 2, 0, 1, 2)
         self.auto_advance_character_frequency_spinbox.setPrefix("Frequency: ")
 
+        self.filter_frame = QFrame(self)
+        self.filter_frame.setObjectName("filter_frame")
+        self.grid.addWidget(self.filter_frame, 3, 0, 1, 2)
+        self.filter_grid = QGridLayout(self.filter_frame)
+
         self.auto_advance_character_tag1_combo = DecoratedComboBox(self)
         self.auto_advance_character_tag1_combo.addItems(["None"] + list(self.load_tags()))
         self.auto_advance_character_tag1_combo.setPrefix("Filter: ")
-        self.grid.addWidget(self.auto_advance_character_tag1_combo, 3, 0)
+        self.filter_grid.addWidget(self.auto_advance_character_tag1_combo, 0, 0)
         self.auto_advance_character_tag1_combo.setToolTip( "Select the tag that determines character pool for auto-advancing.")
 
         self.auto_advance_character_tag2_combo = DecoratedComboBox(self)
         self.auto_advance_character_tag2_combo.addItems(["None"] + list(self.load_tags()))
-        self.grid.addWidget(self.auto_advance_character_tag2_combo, 3, 1)
+        self.filter_grid.addWidget(self.auto_advance_character_tag2_combo, 0, 1)
         self.auto_advance_character_tag2_combo.setPrefix("Filter: ")
         self.auto_advance_character_tag2_combo.setToolTip( "Select the tag that determines character pool for auto-advancing.")
         
+        self.auto_advance_character_tag3_combo = DecoratedComboBox(self)
+        self.auto_advance_character_tag3_combo.addItems(["None"] + list(self.load_tags()))
+        self.filter_grid.addWidget(self.auto_advance_character_tag3_combo, 0, 2)
+        self.auto_advance_character_tag3_combo.setPrefix("Filter: ")
+        self.auto_advance_character_tag3_combo.setToolTip( "Select the tag that determines character pool for auto-advancing.")
 
     def load_tags(self):
         self.characters = get_all_characters()
@@ -65,8 +75,10 @@ class CharacterModifiersTab(QFrame):
     def reload_tags(self):
         current_tag1 = self.auto_advance_character_tag1_combo.currentText()
         current_tag2 = self.auto_advance_character_tag2_combo.currentText()
+        current_tag3 = self.auto_advance_character_tag3_combo.currentText()
         self.auto_advance_character_tag1_combo.clear()
         self.auto_advance_character_tag2_combo.clear()
+        self.auto_advance_character_tag3_combo.clear()
         self.characters = get_all_characters()
         tag_list = []
         for character in self.characters:
@@ -76,6 +88,7 @@ class CharacterModifiersTab(QFrame):
             
         self.auto_advance_character_tag1_combo.addItems(["None"] + tag_list)
         self.auto_advance_character_tag2_combo.addItems(["None"] + tag_list)
+        self.auto_advance_character_tag3_combo.addItems(["None"] + tag_list)
         if current_tag1 in tag_list:
             self.auto_advance_character_tag1_combo.setCurrentText(current_tag1)
         else:
@@ -85,6 +98,12 @@ class CharacterModifiersTab(QFrame):
             self.auto_advance_character_tag2_combo.setCurrentText(current_tag2)
         else:
             self.auto_advance_character_tag2_combo.setCurrentText("None")
+
+        if current_tag3 in tag_list:
+            self.auto_advance_character_tag3_combo.setCurrentText(current_tag3)
+        else:
+            self.auto_advance_character_tag3_combo.setCurrentText("None")
+
     
     def exclusive_checkboxes(self, checked_checkbox):
         if checked_checkbox == self.auto_advance_characters_checkbox and checked_checkbox.isChecked():

@@ -56,6 +56,7 @@ class MainUI(DropAwareFrame):
         self.requested_sets = 0
         self.new_request = True
         self.incriment_set = False
+        self.abort = False
 
     def build_main_ui(self):
         self.main_grid_layout = QGridLayout(self)
@@ -83,12 +84,12 @@ class MainUI(DropAwareFrame):
         self.left_column_widget.upper_frame.page4.theme_combo.currentIndexChanged.connect(lambda: self.apply_theme(QApplication.instance(), self.left_column_widget.upper_frame.page4.theme_combo.currentText()))
         import_signal.import_signal.connect(self.import_state_from_image_metadata)
         self.left_column_widget.upper_frame.page2.cancel_task_button.pressed.connect(lambda: self.abort_loops())
+        completion_signaler.abort_signal.connect(lambda: setattr(self, 'abort', True))
 
     def file_dropped(self, file_path):
         if not is_valid_image_file(file_path):
             Error(self, "The dropped file is not a supported image format.")
             return
-        
         try:
             dict_type, metadata = get_metadata(file_path)
 
@@ -162,20 +163,26 @@ class MainUI(DropAwareFrame):
             self.left_column_widget.upper_frame.page0.image_master_stack_generate.image_settings_tab.generate_progress_loop_bar.setValue(self.loops)
             self.left_column_widget.upper_frame.page0.image_master_stack_generate.image_settings_tab.generate_progress_set_bar.setValue(self.sets)
             
-
         completion_signaler.window_lock_signal.emit(True)
         self.check_loop_conditions()
         completion_signaler.loop_start_signal.emit(self.left_column_widget.upper_frame.page2.list.item(0).text())
         state = self.get_ui_state()
-        self.generate_thread = QThread(self)
-        self.generate_worker = GenerateWorker(state)
-        self.generate_worker.moveToThread(self.generate_thread)
-        self.generate_thread.started.connect(self.generate_worker.run)
-        self.generate_worker.result.connect(self.on_generate_result)
-        self.generate_worker.finished.connect(self.generate_thread.quit)
-        self.generate_worker.finished.connect(self.generate_worker.deleteLater)
-        self.generate_thread.finished.connect(self.generate_thread.deleteLater)
-        self.generate_thread.start()
+        if self.abort:
+            self.abort = False
+            completion_signaler.window_lock_signal.emit(False)
+            self.abort_loops()
+            return
+        
+        else:
+            self.generate_thread = QThread(self)
+            self.generate_worker = GenerateWorker(state)
+            self.generate_worker.moveToThread(self.generate_thread)
+            self.generate_thread.started.connect(self.generate_worker.run)
+            self.generate_worker.result.connect(self.on_generate_result)
+            self.generate_worker.finished.connect(self.generate_thread.quit)
+            self.generate_worker.finished.connect(self.generate_worker.deleteLater)
+            self.generate_thread.finished.connect(self.generate_thread.deleteLater)
+            self.generate_thread.start()
 
     def on_generate_result(self, image_path: str, state: dict):
         print(f'Generation result received: {image_path}')

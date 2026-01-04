@@ -9,6 +9,7 @@ class CompletionSignaler(QObject):
     set_start_signal = Signal()
     set_complete_signal = Signal()
     window_lock_signal = Signal(bool)
+    abort_signal = Signal()
       
     def __init__(self, parent = None):
         super().__init__(parent)

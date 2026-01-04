@@ -2,6 +2,7 @@ from data.datahub import get_all_characters
 from process.CompletionSignaler import completion_signaler  
 from signaling.cycle_character import cycle_character_signal
 import random
+from windows.error import Error
 
 class CharacterAutoCycleManager():
 
@@ -10,6 +11,7 @@ class CharacterAutoCycleManager():
         self.characters = get_all_characters()
         self.cycle_tag1 = None
         self.cycle_tag2 = None
+        self.cycle_tag3 = None
         self.base_character_list = []
         self.character_list = []
         self.current_index = 0
@@ -40,13 +42,16 @@ class CharacterAutoCycleManager():
         
             self.selected_cycle_tag1 = tab4.auto_advance_character_tag1_combo.currentText()
             self.selected_cycle_tag2 = tab4.auto_advance_character_tag2_combo.currentText()
+            self.selected_cycle_tag3 = tab4.auto_advance_character_tag3_combo.currentText()
             self.frequency = tab4.auto_advance_character_frequency_spinbox.value()
 
             if (self.cycle_tag1 != self.selected_cycle_tag1 or
-                self.cycle_tag2 != self.selected_cycle_tag2):
+                self.cycle_tag2 != self.selected_cycle_tag2 or
+                self.cycle_tag3 != self.selected_cycle_tag3):
 
                 self.cycle_tag1 = self.selected_cycle_tag1
                 self.cycle_tag2 = self.selected_cycle_tag2
+                self.cycle_tag3 = self.selected_cycle_tag3
                 self.character_list = []
                 self.current_index = 0
                 self.counter = 0
@@ -118,6 +123,7 @@ class CharacterAutoCycleManager():
         else:
             self.cycle_tag1 = None
             self.cycle_tag2 = None
+            self.cycle_tag3 = None
             self.character_list = []
             self.current_index = 0
             self.counter = 0
@@ -128,25 +134,44 @@ class CharacterAutoCycleManager():
     def build_list(self):
         print("Building character list for auto-cycle...")
         self.new_list = True
+        print(f'self.character_list: {self.character_list}')
+        print(f'self.base_character_list: {self.base_character_list}')
         self.character_list = self.base_character_list.copy()
+        print(f"Initial character list: {self.character_list}")
+
 
         for character in self.characters:
-            if self.cycle_tag1 !='None' and self.cycle_tag2 !='None':
-                if self.cycle_tag1 not in character['tags'] and self.cycle_tag2 not in character['tags']:
-                    self.character_list.remove(character)
-            elif self.cycle_tag1 !='None' and self.cycle_tag2 =='None':
-                if self.cycle_tag1 not in character['tags']:
-                    self.character_list.remove(character)
-            elif self.cycle_tag1 =='None' and self.cycle_tag2 !='None':
-                if self.cycle_tag2 not in character['tags']:
-                    self.character_list.remove(character)
+            current_character = character['nameID']
+            print(f"Evaluating character: {current_character} with tags {character.get('tags', [])}")
+
+            if self.cycle_tag1 !='None' and self.cycle_tag1 not in character.get("tags", []):
+                self.character_list.remove(current_character)
+                print(f"no match for tag1, {current_character} removed")
+                
+        
+            elif self.cycle_tag2 !='None' and self.cycle_tag2 not in character.get("tags", []):
+                self.character_list.remove(current_character)
+                print(f"no match for tag2, {current_character} removed")
+                
+        
+            elif self.cycle_tag3 !='None' and self.cycle_tag3 not in character.get("tags", []):
+                self.character_list.remove(current_character)
+                print(f"no match for tag3, {current_character} removed")
+
             else:
-                pass
-        print(f"Auto-cycle character list built with {len(self.character_list)} characters.")
-    
-
-
-
+                continue
+                
         
+        print(f"Character list after filtering: {self.character_list}")
+        if len(self.character_list) == 0:
+            Error(None, "No characters match the selected filters. Operation aborted.")
+            completion_signaler.abort_signal.emit()
+            self.cycle_tag1 = None
+            self.cycle_tag2 = None
+            self.cycle_tag3 = None
+        else:
+            cycle_character_signal.character_cycle_signal.emit(
+                self.character_list[0],
+                self.parent.ID
+            )
 
-        
