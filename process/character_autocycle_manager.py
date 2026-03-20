@@ -74,7 +74,6 @@ class CharacterAutoCycleManager():
                             self.character_list[self.current_index],
                             self.parent.ID
                         )
-                        print(f"Cycled to character: {self.character_list[self.current_index]}")
 
                     elif self.current_operation == "auto_random":
                         selected_character = random.choice(self.character_list)
@@ -83,14 +82,12 @@ class CharacterAutoCycleManager():
                             selected_character,
                             self.parent.ID
                         )
-                        print(f"Randomly selected character: {selected_character}")
             
                 else:
-                    print(f"cycles remaining until next character: {self.frequency - self.counter}")
+                    pass
 
             elif self.frequency == 0: #Utilizes `On Set` functionality
                 if self.set_cycled:
-                    print(f"Set cycle flag is true, cycling character this generation.")
                     if self.current_operation == "auto_cycle":
                             if self.new_list:
                                 self.current_index = 0
@@ -104,7 +101,6 @@ class CharacterAutoCycleManager():
                                 self.character_list[self.current_index],
                                 self.parent.ID
                             )
-                            print(f"Cycled to character: {self.character_list[self.current_index]}")
                             self.set_cycled = False
 
                     elif self.current_operation == "auto_random":
@@ -114,11 +110,10 @@ class CharacterAutoCycleManager():
                             selected_character,
                             self.parent.ID
                         )
-                        print(f"Randomly selected character: {selected_character}")
                         self.set_cycled = False
             
                 else:
-                    print(f"Set cycle flag is false, not cycling character this generation.")
+                    pass
 
         else:
             self.cycle_tag1 = None
@@ -132,37 +127,26 @@ class CharacterAutoCycleManager():
         
 
     def build_list(self):
-        print("Building character list for auto-cycle...")
         self.new_list = True
-        print(f'self.character_list: {self.character_list}')
-        print(f'self.base_character_list: {self.base_character_list}')
         self.character_list = self.base_character_list.copy()
-        print(f"Initial character list: {self.character_list}")
 
 
         for character in self.characters:
             current_character = character['nameID']
-            print(f"Evaluating character: {current_character} with tags {character.get('tags', [])}")
 
             if self.cycle_tag1 !='None' and self.cycle_tag1 not in character.get("tags", []):
                 self.character_list.remove(current_character)
-                print(f"no match for tag1, {current_character} removed")
                 
         
             elif self.cycle_tag2 !='None' and self.cycle_tag2 not in character.get("tags", []):
                 self.character_list.remove(current_character)
-                print(f"no match for tag2, {current_character} removed")
                 
         
             elif self.cycle_tag3 !='None' and self.cycle_tag3 not in character.get("tags", []):
                 self.character_list.remove(current_character)
-                print(f"no match for tag3, {current_character} removed")
 
             else:
                 continue
-                
-        
-        print(f"Character list after filtering: {self.character_list}")
         if len(self.character_list) == 0:
             Error(None, "No characters match the selected filters. Operation aborted.")
             completion_signaler.abort_signal.emit()

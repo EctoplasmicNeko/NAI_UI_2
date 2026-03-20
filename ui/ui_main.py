@@ -36,7 +36,6 @@ class MainUI(DropAwareFrame):
         self.import_dialgue_characters_state = False
 
         self.image_cache = load_image_tree()
-        print(self.image_cache['references'])
         self.build_main_ui()
         loaded_config = load_config()
         self.left_column_widget.refresh_all_character_lists()
@@ -78,7 +77,7 @@ class MainUI(DropAwareFrame):
 
         #Bound buttons
         self.left_column_widget.upper_frame.page4.generate_button.pressed.connect(lambda: self.core_loop())
-        self.left_column_widget.upper_frame.page4.test_button.pressed.connect(lambda: print(self.image_cache))
+        self.left_column_widget.upper_frame.page4.test_button.pressed.connect(lambda: None)
         self.left_column_widget.upper_frame.page4.manage_characters_button.pressed.connect(lambda: self.launch_manage_characters())
         self.centre_column_widget.viewport_button.pressed.connect(lambda: self.core_loop())
         self.left_column_widget.upper_frame.page4.theme_combo.currentIndexChanged.connect(lambda: self.apply_theme(QApplication.instance(), self.left_column_widget.upper_frame.page4.theme_combo.currentText()))
@@ -142,7 +141,6 @@ class MainUI(DropAwareFrame):
             self.new_request = False
     
     def abort_loops(self):
-        print("Aborting loops...")
         self.loops = 0
         self.sets = 0
         self.total_loops = 0
@@ -185,7 +183,6 @@ class MainUI(DropAwareFrame):
             self.generate_thread.start()
 
     def on_generate_result(self, image_path: str, state: dict):
-        print(f'Generation result received: {image_path}')
         if image_path == '':
             Error(self, "Generation failed. Please check your settings and try again.")
             return
@@ -212,7 +209,6 @@ class MainUI(DropAwareFrame):
                 elif self.loops >= self.requested_loops and self.sets >= self.requested_sets:
                     self.left_column_widget.upper_frame.page0.image_master_stack_generate.image_settings_tab.generate_progress_loop_bar.setValue(self.loops)
                     self.left_column_widget.upper_frame.page0.image_master_stack_generate.image_settings_tab.generate_progress_set_bar.setValue(self.sets)
-                    print(f"All loops and sets completed. Total loops executed: {self.total_loops}")
 
                     self.left_column_widget.upper_frame.page2.loops.setDisabled(False) 
                     self.left_column_widget.upper_frame.page2.sets.setDisabled(False)
@@ -288,7 +284,6 @@ class MainUI(DropAwareFrame):
     def import_state_from_image_metadata(self, dict_type: str, metadata: dict, load_settings: bool, 
                                          load_prompt: bool, load_seed: bool, load_characters: bool):
         
-        print("Importing state from image metadata...")
         self.import_dialgue_prompt_state = load_prompt
         self.import_dialgue_settings_state = load_settings
         self.import_dialgue_seed_state = load_seed
@@ -479,11 +474,9 @@ class MainUI(DropAwareFrame):
 
         for size in self.left_column_widget.upper_frame.page0.image_master_stack_generate.image_sizes_tab.sizes[1:]:
             matched = None
-            print(f"Checking size: {size['name']} {size['image_height']} x {size['image_width']} against imported size {resized_height} x {resized_width}")
             if int(size['image_height']) == resized_height and int(size['image_width']) == resized_width:
                 image_sizes_tab = self.left_column_widget.upper_frame.page0.image_master_stack_generate.image_sizes_tab
                 size_name = f'{size["name"]} {size["image_height"]} x {size["image_width"]}'
-                print(f"Matched size: {size_name}")
                 index = image_sizes_tab.size_list.index(f'{size["name"]} {size["image_height"]} x {size["image_width"]}')
                 image_sizes_tab.sizes_comboxbox.setCurrentIndex(index)
                 matched = size_name

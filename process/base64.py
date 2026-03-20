@@ -62,7 +62,6 @@ def padded_image_to_b64(reference_path,
         save_path = debug_dir / f"{original_stem}_padded.png"
 
         new_img.save(save_path, format="PNG")
-        print(f"[DEBUG] Saved padded image to: {save_path}")
 
     # --- Encode to base64 ---
     buffer = io.BytesIO()

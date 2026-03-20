@@ -152,7 +152,6 @@ class CharacterLowerMasterTab(QFrame):
             btn = self.sub_notebook.character_sub_tab_3.reference_button_group.checkedButton()
             if btn is not None:
                 active_reference = btn.property('image_path')
-                print(f'active_reference = {active_reference}')
         
         fidelity = self.sub_notebook.character_sub_tab_3.fidelity_spinner.value()
         fidelity = f"{fidelity:.2f}"
@@ -194,7 +193,6 @@ class CharacterLowerMasterTab(QFrame):
         
     def import_state(self, loaded):
         loaded_character = loaded['character']
-        print(f'loaded_character = {loaded_character}')
 
         saved_id = loaded['character_coordinate_button'] 
         if saved_id != -1:
@@ -272,8 +270,6 @@ class CharacterLowerMasterTab(QFrame):
         characters_file_path = CHARACTERS_DIR / f"{self.current_character}.json"
         with characters_file_path.open("w", encoding="utf-8") as f:
             json.dump(character_data, f, indent=2, ensure_ascii=False)
-
-        print(f"[Character] Saved most_recent_outfit: {new_outfit_name}")
 
     def on_refresh_character_list(self):
         self.sub_notebook.character_sub_tab_4.reload_tags()

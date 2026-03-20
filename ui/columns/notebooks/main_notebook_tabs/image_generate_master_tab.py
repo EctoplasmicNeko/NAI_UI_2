@@ -103,9 +103,6 @@ class ImageGenerateMasterTab(QFrame):
         self.image_sizes_tab.heights_list[0] = loaded['custom_height']
         self.image_sizes_tab.width_list[0] = loaded['custom_width']  
 
-        print(loaded['size_name'])
-        print(self.image_sizes_tab.size_list)
-
         if loaded['size_name'] not in self.image_sizes_tab.size_list:
 
             match = False

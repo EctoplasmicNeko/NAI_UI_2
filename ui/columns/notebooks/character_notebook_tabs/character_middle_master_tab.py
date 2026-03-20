@@ -120,7 +120,6 @@ class CharacterMiddleMasterTab(QFrame):
 
     def import_state(self, loaded):
         loaded_character = loaded['character']
-        print(f'loaded_character = {loaded_character}')
         if loaded_character == 'Loaded' or loaded_character not in self.character_list: #character association screen will launch here
             self.fluff_tab.character_select_combobox.setCurrentIndex(0) #sets to None
         else:

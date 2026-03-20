@@ -165,12 +165,9 @@ def get_metadata(image_path):
     custom_dict = load_custom_json(image_path) #try to load NAI_UI_2 custom metadata
 
     if not custom_dict:
-        print("No NAI_UI_2 metadata found in the image, fallback to NovelAI metadata.")
         return 'native', get_imported_image_metadata_native(image_path, info_dict, comment_json) #fallback to native metadata parsing
     else:
-        print("NAI_UI_2 metadata found in the image, using custom metadata.")
         character_count = len(custom_dict["characters"])
-        print(f"Detected {character_count} characters in the image metadata.")
         return 'custom', custom_dict
     
 
@@ -180,11 +177,9 @@ def get_imported_image_metadata_native(image_path, info_dict, comment_json):
     model_label, model_hash = parse_nai_source_field(source)
 
     if model_label.startswith("Stable Diffusion XL"):
-        print(f"V3/SDXL image detected, no character data present.")
         character_count = 0
     else:
         character_count = len(comment_json["v4_prompt"]["caption"]["char_captions"])
-        print(f"Detected {character_count} characters in the image metadata.")
 
     top_level = {
         # raw info

@@ -44,10 +44,8 @@ def encode_vibe_with_nai(image_b64: str, model_value: str, information_extracted
     response = requests.post(url, json=payload, headers=headers, timeout=120)
 
     content_type = (response.headers.get("Content-Type") or "").lower()
-    print(f"[vibe] encode status={response.status_code} content-type={content_type}")
 
     if response.status_code != 200:
-        print("[vibe] encode error body (first 500 chars):", response.text[:500])
         raise RuntimeError(f"NAI encode failed ({response.status_code}): {response.text}")
 
     # If it really is JSON, extract from JSON.
@@ -84,8 +82,6 @@ def identify_vibe_images(state):
       state["vibe"][i]["information_extracted"] -> float
       state["auth"]["api_token"] -> str
     """
-    print("Identifying vibe images...")
-    print(state['vibe'])
     encodings = []
 
     model_value = state["generate"]["model"]

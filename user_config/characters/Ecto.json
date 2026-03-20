@@ -4,51 +4,39 @@
   "c_positive": [
     {
       "tag": "girl",
-      "strength": 1
+      "strength": 1.0
     },
     {
       "tag": "pale skin",
-      "strength": 1
+      "strength": 1.0
     },
     {
       "tag": "pale blue hair",
-      "strength": 1
+      "strength": 1.0
     },
     {
       "tag": "blank white eye",
-      "strength": 1
+      "strength": 1.0
     },
     {
       "tag": "cat ears",
-      "strength": 1
+      "strength": 1.0
     },
     {
       "tag": "glowing blue",
-      "strength": 1
+      "strength": 1.0
     },
     {
       "tag": "flaming tail",
-      "strength": 1
+      "strength": 1.0
     },
     {
       "tag": "blue flames on tail",
-      "strength": 1
+      "strength": 1.0
     },
     {
       "tag": "long hair",
-      "strength": 1
-    },
-    {
-      "tag": "large head",
-      "strength": 1.5
-    },
-    {
-      "tag": "large ears",
-      "strength": 1.5
-    },
-    {
-      "tag": "large eyes",
-      "strength": 1.5
+      "strength": 1.0
     }
   ],
   "c_negative": [
@@ -111,10 +99,6 @@
     {
       "tag": "large areolae",
       "strength": 1
-    },
-    {
-      "tag": "huge ass",
-      "strength": 1
     }
   ],
   "g_positive": "",
@@ -126,7 +110,14 @@
   "species": "Dead Felinid",
   "subspecies": "Poltergeist",
   "species icon": "Cat",
-  "tags": [],
+  "tags": [
+    "Child",
+    "Felinid",
+    "Female",
+    "Hybrid",
+    "Minor",
+    "Wolfwood"
+  ],
   "quick_weights": [
     {
       "max": 3,
@@ -206,13 +197,7 @@
       "blacklist": [
         "from behind"
       ],
-      "trigger_location": [
-        "c_positive",
-        "g_positive"
-      ],
-      "inject_location": [
-        "c_positive"
-      ]
+      "type": "add"
     }
   ]
 }

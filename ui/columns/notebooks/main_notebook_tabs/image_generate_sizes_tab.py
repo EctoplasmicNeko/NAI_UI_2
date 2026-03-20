@@ -34,6 +34,5 @@ class ImageGenerateSizesTab(QFrame):
         if current_index < 0:
             return
         self.sizes_comboxbox.setProperty('image_height', self.heights_list[current_index])
-        print(self.sizes_comboxbox.property('image_height'))
         self.sizes_comboxbox.setProperty('image_width', self.width_list[current_index])
 

@@ -37,12 +37,10 @@ class LeftColumn(QFrame):
         self.middle_frame.button_group.idToggled.connect(self.lower_frame.stack.setCurrentIndex) #connect character notebooks
 
     def refresh_all_character_lists(self):
-        print("Refreshing character lists...")   
         self.characters = get_all_characters()
         self.character_list = self.get_sorted_characters_by_priority()
 
         tab1_character = self.middle_frame.character_tab_1.fluff_tab.character_select_combobox.currentText()
-        print(f"tab1_character: {tab1_character}")
         self.middle_frame.character_tab_1.characters = self.characters
         self.middle_frame.character_tab_1.fluff_tab.characters = self.characters
         self.middle_frame.character_tab_1.character_list = self.character_list

@@ -74,12 +74,6 @@ def post_to_backend(payload, header, state):
                 try:
                     response.raise_for_status()
                 except requests.exceptions.HTTPError as e:
-                    print(f"[post_to_backend] HTTP error: {e}")
-                    print(f"[post_to_backend] Status code: {response.status_code}")
-                    try:
-                        print(f"[post_to_backend] Response body: {response.text}")
-                    except Exception:
-                        pass
                     last_error = e
                     raise  # bubble out to outer except
 
@@ -116,8 +110,6 @@ def post_to_backend(payload, header, state):
                 file_path = extract_zip(zip_path, final_path)
                 success = True
             else:
-                print(f"[post_to_backend] Downloaded file is not a valid zip: {zip_path}")
-                print(f"[post_to_backend] Content-Type: {response.headers.get('Content-Type')}")
                 last_error = RuntimeError("Downloaded file is not a valid zip")
                 retries += 1
                 time.sleep(RETRY_DELAY)
@@ -125,19 +117,14 @@ def post_to_backend(payload, header, state):
         except (requests.exceptions.Timeout, requests.exceptions.ReadTimeout) as e:
             retries += 1
             last_error = e
-            print(f"[post_to_backend] Timeout on attempt {retries}/{MAX_RETRIES}: {e}")
             time.sleep(RETRY_DELAY)
 
         except requests.exceptions.RequestException as e:
             retries += 1
             last_error = e
-            print(f"[post_to_backend] Request error on attempt {retries}/{MAX_RETRIES}: {e}")
             time.sleep(RETRY_DELAY)
 
     if not success:
-        print("[post_to_backend] All retries failed.")
-        if last_error:
-            print(f"[post_to_backend] Last error was: {repr(last_error)}")
         # unlock / reset UI
         completion_signaler.complete_signal.emit()
         return None

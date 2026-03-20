@@ -37,9 +37,8 @@ def _load_all_json_in_dir(source_dir: Path, target_cache: dict, label: str) -> N
         json_path = source_dir / filename
         try:
             target_cache[key] = _load_json_from_file(json_path)
-            print(f"{label}: {filename} loaded...")
         except Exception as exception:
-            print(f"{label}: FAILED to load {json_path} ({exception})")
+            pass
 
 def load_all() -> dict:
     """
@@ -77,12 +76,10 @@ def load_characters() -> dict:
         try:
             loaded = _load_json_from_file(file_path)
         except Exception as exception:
-            print(f"characters: FAILED to load {file_path} ({exception})")
             continue
 
         character = loaded[0] if isinstance(loaded, list) and loaded else loaded
         if not isinstance(character, dict):
-            print(f"characters: unexpected format in {file_path} (expected dict or [dict])")
             continue
 
         character_id = character.get("nameID") or os.path.splitext(filename)[0]

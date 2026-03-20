@@ -70,7 +70,6 @@ def prepare_v4_payload(state, version):
         vibe_normalize_strength = state['vibe']['normalize_strength']
         
     else:
-        print("Vibe not enabled or no reference images provided.")
         vibe_encodings = []
         vibe_reference_strength = []
         vibe_normalize_strength = False
@@ -138,7 +137,6 @@ def prepare_v45_payload(state, version):
         using_vibe = True
         
     else:
-        print("Vibe not enabled or no reference images provided.")
         vibe_encodings = []
         vibe_reference_strength = []
         vibe_normalize_strength = False
@@ -272,9 +270,6 @@ def prepare_positive_prompt(state, version):
     if global_positive_prompt != "" and global_positive_prompt != None:
         split_global_positive = global_positive_prompt.split(",")
         prompt.extend(split_global_positive)
-        print(f"Global Positive Prompt: {global_positive_prompt}")
-    else:
-        print("No Global Positive Prompt found.")
     
     
     if character_count > 0:
@@ -283,9 +278,6 @@ def prepare_positive_prompt(state, version):
             if preset_global_positive != '' and preset_global_positive != None:
                 split_preset_global_positive = preset_global_positive.split(",")
                 prompt.extend(split_preset_global_positive)
-                print(f"Appending character {index} global positive preset: {preset_global_positive}")
-            else:
-                print(f"No global positive preset found for character {index}.")
 
             if version == 'v3':
 
@@ -302,19 +294,14 @@ def prepare_positive_prompt(state, version):
                     split_prompt_positive = prompt_positive.split(",")
                     prompt.extend(split_prompt_positive)
 
-    print(f"Global Positive Preset: {preset}")
     if preset != '' and preset != None:
         if target == 'end':
             split_preset = preset.split(",")
             prompt.extend(split_preset)
-            print(f"Appended preset at end: {preset}")
         elif target == 'start':
             split_preset = preset.split(",")
             for item in reversed(split_preset):
                 prompt.insert(0, item)
-            print(f"Inserted preset at start: {preset}")
-    else:
-        print("No global positive preset found.")
     prompt = [tag.strip() for tag in prompt]
 
     final_prompt = ", ".join(prompt)
@@ -387,32 +374,26 @@ def prepare_positive_character_prompt(state):
                 split_prompt_positive = prompt_positive.split(",")
                 caption.extend(split_prompt_positive)
 
-            print(f"Preparing associations for character {id} with caption: {caption}")
             caption = [tag.strip() for tag in caption]
-            print(f"Cleaned caption for character {id}: {caption}")
 
             caption_set = set(caption)
             associations_to_add = []
             associations_to_remove = []
 
             for association in state[key]['character_tag_associations']:
-                print(f"Processing association: {association}")
                 blacklists = association['blacklist']
                 for blacklist in blacklists:
                     if blacklist in caption_set:
-                        print(f"Skipping association due to blacklist match: {blacklist}")
                         break
                 
                 trigger_found = False
                 triggers = association['trigger']
                 for trigger in triggers:
                     if trigger in caption_set:
-                        print(f"Trigger found for association: {trigger}")
                         trigger_found = True
                         break
 
                 if trigger_found:
-                    print(f"Applying association of type {association['type']}")
                     if association['type'] == 'add':
                         for tag in association['inject']:
                             associations_to_add.append(tag)
@@ -427,9 +408,6 @@ def prepare_positive_character_prompt(state):
                         for tag in association['trigger']:
                             associations_to_remove.append(tag)
 
-            print(f"Associations to add for character {id}: {associations_to_add}")
-            print(f"Associations to remove for character {id}: {associations_to_remove}")
-
             for tag in associations_to_add:
                 if tag not in caption:
                     caption.append(tag)
@@ -438,11 +416,7 @@ def prepare_positive_character_prompt(state):
                 if tag in caption:
                     caption.remove(tag)
 
-            print(f"Final caption for character {id}: {caption}")
-
             joined_caption = ", ".join(caption)
-
-            print(f"Final cleaned caption for character {id}: {joined_caption}")
 
             payload = {
                 "centers": [
@@ -484,7 +458,6 @@ def prepare_negative_character_prompt(state):
                 split_prompt_negative = prompt_negative.split(",")
                 caption.extend(split_prompt_negative)   
 
-            print(f"Cleaned negative caption for character {id}: {caption}")
             joined_caption = ", ".join(caption)
             
             payload = {

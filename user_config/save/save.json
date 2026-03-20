@@ -1,26 +1,26 @@
 {
   "main_window": {
-    "most_recent_image": "C:\\Users\\jesse\\OneDrive\\Desktop\\github\\NAI_UI_2\\output\\image_20260103194206_6252b5f1345144519eb64c9a84f6298f.png",
-    "most_recent_height": 1216,
-    "most_recent_width": 832,
+    "most_recent_image": "C:\\Users\\jesse\\OneDrive\\Desktop\\github\\NAI_UI_2\\output\\image_20260129211329_5bee1fc247a64724bb00c0ff65d1b38b.png",
+    "most_recent_height": 832,
+    "most_recent_width": 1216,
     "import_dialog_settings_state": true,
     "import_dialog_prompt_state": true,
     "import_dialog_seed_state": true,
     "import_dialog_characters_state": true
   },
   "generate": {
-    "model": "nai-diffusion-4-5-full",
-    "model_name": "Version 4.5 - Full",
-    "variety+_value": 59,
-    "payload_name": "nai-diffusion-4-5-full",
-    "payload_type": "v45",
-    "sampler_name": "Euler Ancestral",
-    "sampler": "k_euler_ancestral",
-    "schedule_name": "Karras",
-    "schedule": "karras",
+    "model": "nai-diffusion-3",
+    "model_name": "Version 3 - Anime",
+    "variety+_value": 19,
+    "payload_name": "nai-diffusion-3",
+    "payload_type": "v3",
+    "sampler_name": "Euler",
+    "sampler": "k_euler",
+    "schedule_name": "Native",
+    "schedule": "native",
     "steps": 28,
     "seed": 0,
-    "scale": 5.0,
+    "scale": 4.0,
     "rescale": 0.0,
     "cfg": -1.0,
     "legacy_v3": false,
@@ -29,10 +29,10 @@
     "DYN": false,
     "variety+": false,
     "decrisp": false,
-    "brownian": true,
-    "size_name": "Normal Portrait 1216 x 832",
-    "image_height": 1216,
-    "image_width": 832,
+    "brownian": false,
+    "size_name": "Normal Landscape 832 x 1216",
+    "image_height": 832,
+    "image_width": 1216,
     "custom_width": 1280,
     "custom_height": 832
   },
@@ -49,13 +49,13 @@
     "emotion_merged_prompt": "aroused;;"
   },
   "global_prompt": {
-    "global_positive_prompt": "",
-    "global_negative_prompt": "",
-    "global_positive_preset_name": "V4.5 - Official",
-    "global_positive_preset_tags": "very aesthetic, masterpiece, no text",
-    "global_positive_preset_target": "end",
-    "global_negative_preset_name": "V4 Light",
-    "global_negative_preset_tags": "blurry, lowres, error, worst quality, bad quality, jpeg artifacts, very displeasing, logo, dated, signature",
+    "global_positive_prompt": "1girl, child, blonde hair, long hair, ahoge, blue eyes, loli, very aesthetic, topless, diaper, couch, on back, paw pose, from above, paw gloves",
+    "global_negative_prompt": "lowres, {bad}, error, fewer, extra, missing, worst quality, jpeg artifacts, bad quality, watermark, unfinished, displeasing, chromatic aberration, signature, extra digits, artistic error, username, scan, [abstract]",
+    "global_positive_preset_name": "None",
+    "global_positive_preset_tags": "",
+    "global_positive_preset_target": null,
+    "global_negative_preset_name": "None",
+    "global_negative_preset_tags": "",
     "character_number": 0
   },
   "workflow": {
@@ -64,8 +64,8 @@
     "task_list": [
       "Generate"
     ],
-    "loops": 3,
-    "sets": 3,
+    "loops": 10,
+    "sets": 0,
     "filter_1": "None",
     "filter_2": "None",
     "filter_3": "None",
@@ -83,22 +83,16 @@
     "enable_hydrus_sidecar": false
   },
   "vibe": {
-    "reference_image_paths": [
-      "C:\\Users\\jesse\\OneDrive\\Desktop\\github\\NAI_UI_2\\user_config\\vibes\\1000003485.jpg"
-    ],
-    "reference_strengths": [
-      1.0
-    ],
-    "reference_information_extracted": [
-      1.0
-    ],
+    "reference_image_paths": [],
+    "reference_strengths": [],
+    "reference_information_extracted": [],
     "normalize_strength": false,
-    "vibe_enabled": true
+    "vibe_enabled": false
   },
   "character_1": {
     "character": "None",
-    "character_positive_prompt": "",
-    "character_negative_prompt": "",
+    "character_positive_prompt": "loli, girl, orange hair, medium hair, hair intakes,nekomimi, cat ear, ahoge, aqua eyes, tail, -1::realistic face, sharp jawline, adult, mature face::,, white shirt, navy blue tie, white betret with navy blue trim, smile, v, hair bobbles",
+    "character_negative_prompt": "ribs, large breasts, huge breasts, gigantic breasts, wide hips, plump, fat, curvy, narrow waist, hip bones, skinny, hip dips, belly, big belly, large areolae, huge ass",
     "character_coordinate_button": 0,
     "character_y_coordinate": 0,
     "character_x_coordinate": 0,
@@ -119,15 +113,17 @@
     "character_tag_associations": []
   },
   "character_2": {
-    "character": "None",
-    "character_positive_prompt": "",
+    "character": "Erin",
+    "character_positive_prompt": "hand on anothers breast, excited, hand on anothers pussy",
     "character_negative_prompt": "",
     "character_coordinate_button": 0,
     "character_y_coordinate": 0,
     "character_x_coordinate": 0,
-    "character_positive_quick_weights": [],
+    "character_positive_quick_weights": [
+      "0.6::Mature Female::"
+    ],
     "character_negative_quick_weights": [],
-    "character_preset_positive": "",
+    "character_preset_positive": "girl, adult, blue eyes, brown hair, glasses, medium hair, medium breasts",
     "character_preset_negative": "",
     "character_preset_global_positive": "",
     "character_preset_global_negative": "",
@@ -142,7 +138,7 @@
     "character_tag_associations": []
   },
   "character_3": {
-    "character": "None",
+    "character": "Yuzu",
     "character_positive_prompt": "",
     "character_negative_prompt": "",
     "character_coordinate_button": -1,
@@ -150,19 +146,34 @@
     "character_x_coordinate": null,
     "character_positive_quick_weights": [],
     "character_negative_quick_weights": [],
-    "character_preset_positive": "",
-    "character_preset_negative": "",
+    "character_preset_positive": "girl, light orange hair, short bob, rabbit ears",
+    "character_preset_negative": "ribs, large breasts, huge breasts, gigantic breasts, wide hips, plump, fat, curvy, narrow waist, hip bones, skinny, hip dips, belly, big belly, large areolae, huge ass",
     "character_preset_global_positive": "",
     "character_preset_global_negative": "",
-    "character_outfit_preset_positive": "",
+    "character_outfit_preset_positive": "big sweater, skirt, rubber boots",
     "character_outfit_preset_negative": "",
-    "most_recent_outfit": "None",
+    "most_recent_outfit": "Canonical",
     "character_reference_path": null,
     "character_reference_enabled": false,
     "character_reference_style_aware": "character",
     "character_reference_fidelity": 1.0,
     "character_reference_strength": 0.0,
-    "character_tag_associations": []
+    "character_tag_associations": [
+      {
+        "blacklist": [
+          "from behind"
+        ],
+        "inject": [
+          "flat chest"
+        ],
+        "trigger": [
+          "nude",
+          "naked",
+          "topless"
+        ],
+        "type": "add"
+      }
+    ]
   },
   "character_4": {
     "character": "None",
